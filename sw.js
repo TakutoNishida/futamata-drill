@@ -1,5 +1,5 @@
 // オフライン用。index.html などは保存しておき、電波がなくても開けるようにする
-const CACHE = "futamata-34a396258b";
+const CACHE = "futamata-5ce53174bc";
 const CORE = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
