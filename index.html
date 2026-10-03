@@ -105,6 +105,11 @@ p{margin:0}
 .row{display:flex;gap:10px;flex-wrap:wrap}
 .row>*{flex:1 1 140px}
 /* risk */
+.sfig{margin:0;display:flex;flex-direction:column;gap:6px}
+.sfig svg{width:100%;height:auto;max-width:100%;border-radius:10px;display:block;background:#D9E3D2}
+.sfig figcaption{font-size:12px;color:var(--muted)}
+.sfig .me{color:#2F6FD0}
+.sfig .q{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;border:2px solid #D2453A;color:#D2453A;font-weight:700;font-size:11px;line-height:1}
 .scene{background:var(--sign-soft);border-radius:12px;padding:14px;font-weight:700;line-height:1.7}
 .ritem{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border-top:1px solid var(--line);padding-top:12px}
 .ritem p{font-size:15px;min-width:0}
@@ -739,6 +744,166 @@ function sources(x){
 }
 function srcHtml(x){ return `<div class="src"><span class="small muted">載っているところ</span>${sources(x).map(o => `<a href="${o.u}" target="_blank" rel="noopener">${esc(o.t)}</a>`).join("")}</div>`; }
 
+/* ---------- 危険予測の見下ろし図（SVG。外部画像は使わない） ----------
+   座標は 320×240。日本は左側通行なので、自車（青）は道路の左側を上へ進む */
+const ART = (() => {
+  const W = 320, H = 240;
+  const C = { ground:"#D9E3D2", walk:"#CDD3DA", road:"#727A84", line:"#FFFFFF", yellow:"#F2C230",
+    me:"#2F6FD0", car:"#F5F5F5", edge:"#3A4049", truck:"#E4E6EA", cab:"#8FB3C9", bus:"#F0C24B",
+    ped:"#D2453A", kid:"#E8862A", bike:"#2E7D4F", hidden:"#FFFFFF" };
+  const JP = "'Zen Kaku Gothic New','Hiragino Sans','Noto Sans JP','Yu Gothic','Meiryo',sans-serif";
+  const deg = { up:0, right:90, down:180, left:270 };
+  let out = [];
+  const add = s => out.push(s);
+
+  function ground(color){ add(`<rect width="${W}" height="${H}" fill="${color || C.ground}"/>`); }
+  // 縦の道路。center: dash(白破線) / white(白実線) / yellow / none、lanes: 車線境界の破線のx
+  function vroad(x0, x1, o = {}){
+    const y0 = o.y0 ?? 0, y1 = o.y1 ?? H;
+    if (o.walk !== false){ add(`<rect x="${x0-16}" y="${y0}" width="16" height="${y1-y0}" fill="${C.walk}"/><rect x="${x1}" y="${y0}" width="16" height="${y1-y0}" fill="${C.walk}"/>`); }
+    add(`<rect x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="${C.road}"/>`);
+    add(`<line x1="${x0+3}" y1="${y0}" x2="${x0+3}" y2="${y1}" stroke="${C.line}" stroke-width="2"/><line x1="${x1-3}" y1="${y0}" x2="${x1-3}" y2="${y1}" stroke="${C.line}" stroke-width="2"/>`);
+    const cx = o.cx ?? (x0 + x1) / 2;
+    if (o.center === "dash") add(`<line x1="${cx}" y1="${y0}" x2="${cx}" y2="${y1}" stroke="${C.line}" stroke-width="3" stroke-dasharray="14 10"/>`);
+    if (o.center === "white") add(`<line x1="${cx}" y1="${y0}" x2="${cx}" y2="${y1}" stroke="${C.line}" stroke-width="3"/>`);
+    if (o.center === "yellow") add(`<line x1="${cx}" y1="${y0}" x2="${cx}" y2="${y1}" stroke="${C.yellow}" stroke-width="4"/>`);
+    (o.lanes || []).forEach(x => add(`<line x1="${x}" y1="${y0}" x2="${x}" y2="${y1}" stroke="${C.line}" stroke-width="2" stroke-dasharray="12 10"/>`));
+  }
+  function hroad(y0, y1, o = {}){
+    const x0 = o.x0 ?? 0, x1 = o.x1 ?? W;
+    if (o.walk !== false){ add(`<rect x="${x0}" y="${y0-14}" width="${x1-x0}" height="14" fill="${C.walk}"/><rect x="${x0}" y="${y1}" width="${x1-x0}" height="14" fill="${C.walk}"/>`); }
+    add(`<rect x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="${C.road}"/>`);
+    const cy = (y0 + y1) / 2;
+    if (o.center === "dash") add(`<line x1="${x0}" y1="${cy}" x2="${x1}" y2="${cy}" stroke="${C.line}" stroke-width="3" stroke-dasharray="14 10"/>`);
+  }
+  function box(x0, y0, x1, y1, fill){ add(`<rect x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="${fill || C.road}"/>`); }
+  function crossV(x0, x1, y0, y1){ // 横断歩道（縦の道路を横切る）
+    for (let x = x0 + 3; x < x1 - 4; x += 10) add(`<rect x="${x}" y="${y0}" width="6" height="${y1-y0}" fill="${C.line}"/>`);
+  }
+  function crossH(y0, y1, x0, x1){ // 横断歩道（横の道路を横切る）
+    for (let y = y0 + 3; y < y1 - 4; y += 10) add(`<rect x="${x0}" y="${y}" width="${x1-x0}" height="6" fill="${C.line}"/>`);
+  }
+  function stopLine(x0, x1, y){ add(`<rect x="${x0}" y="${y}" width="${x1-x0}" height="4" fill="${C.line}"/>`); }
+  function hidden(x, y){ add(`<circle cx="${x}" cy="${y}" r="9" fill="#FFFFFF" stroke="${C.ped}" stroke-width="2"/><text x="${x}" y="${y+4.5}" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="${C.ped}">?</text>`); }
+
+  // 車両。kind: me / car / truck / bus / moto / bike / kick。o.blink: "r"|"l"|"both"、o.ghost: 見えていない可能性
+  function veh(x, y, dir, kind, o = {}){
+    const dims = { me:[22,38], car:[22,38], truck:[26,64], bus:[26,66], moto:[9,22], bike:[7,20], kick:[7,18] }[kind];
+    const [w, h] = dims, op = o.ghost ? ' opacity="0.55"' : "";
+    let g = `<g transform="translate(${x} ${y}) rotate(${deg[dir]})"${op}>`;
+    const dash = o.ghost ? ' stroke-dasharray="4 3"' : "";
+    if (kind === "me" || kind === "car"){
+      const fill = kind === "me" ? C.me : (o.color || C.car);
+      g += `<rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" rx="6" fill="${fill}" stroke="${C.edge}" stroke-width="1.5"${dash}/>`;
+      g += `<rect x="${-w/2+3}" y="${-h/2+7}" width="${w-6}" height="7" rx="2" fill="#1E2A38" opacity="0.75"/>`;
+      g += `<rect x="${-w/2+3}" y="${h/2-9}" width="${w-6}" height="5" rx="2" fill="#1E2A38" opacity="0.5"/>`;
+    } else if (kind === "truck"){
+      g += `<rect x="${-w/2}" y="${-h/2+16}" width="${w}" height="${h-16}" rx="2" fill="${C.truck}" stroke="${C.edge}" stroke-width="1.5"${dash}/>`;
+      g += `<rect x="${-w/2+1}" y="${-h/2}" width="${w-2}" height="15" rx="4" fill="${C.cab}" stroke="${C.edge}" stroke-width="1.5"${dash}/>`;
+    } else if (kind === "bus"){
+      g += `<rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" rx="5" fill="${C.bus}" stroke="${C.edge}" stroke-width="1.5"/>`;
+      g += `<rect x="${-w/2+3}" y="${-h/2+5}" width="${w-6}" height="6" rx="2" fill="#1E2A38" opacity="0.75"/>`;
+      for (let i = 0; i < 5; i++) g += `<rect x="${-w/2+2}" y="${-h/2+16+i*9}" width="3" height="6" fill="#1E2A38" opacity="0.5"/><rect x="${w/2-5}" y="${-h/2+16+i*9}" width="3" height="6" fill="#1E2A38" opacity="0.5"/>`;
+    } else if (kind === "moto"){
+      g += `<rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" rx="4" fill="#4A4F57" stroke="${C.edge}"${dash}/><circle cx="0" cy="1" r="5" fill="#E04848" stroke="${C.edge}"/>`;
+    } else if (kind === "bike"){
+      g += `<rect x="${-w/2+2}" y="${-h/2}" width="${w-4}" height="${h}" rx="1.5" fill="#333"/><circle cx="0" cy="2" r="5" fill="${C.bike}" stroke="${C.edge}"/>`;
+    } else if (kind === "kick"){
+      g += `<rect x="${-1.5}" y="${-h/2}" width="3" height="${h}" fill="#333"/><rect x="-6" y="${-h/2}" width="12" height="2.5" fill="#333"/><circle cx="0" cy="2" r="5" fill="#7A4FC0" stroke="${C.edge}"/>`;
+    }
+    const blink = (side) => { const bx = side === "r" ? w/2 - 2 : -w/2 + 2;
+      return `<circle cx="${bx}" cy="${-h/2+2}" r="3.2" fill="#FF9F1A" stroke="#B85F00"/><circle cx="${bx}" cy="${h/2-2}" r="3.2" fill="#FF9F1A" stroke="#B85F00"/>`; };
+    if (o.blink === "r" || o.blink === "both") g += blink("r");
+    if (o.blink === "l" || o.blink === "both") g += blink("l");
+    if (o.door){ g += `<line x1="${w/2}" y1="${-h/2+12}" x2="${w/2+11}" y2="${-h/2+20}" stroke="${C.edge}" stroke-width="3"/>`; }
+    if (o.beam){ g += `<polygon points="${-w/2+2},${-h/2} ${w/2-2},${-h/2} ${w/2+18},${-h/2-60} ${-w/2-18},${-h/2-60}" fill="#FFF3A6" opacity="0.55"/>`; }
+    g += `</g>`;
+    add(g);
+  }
+  function person(x, y, o = {}){
+    const r = o.kid ? 4.5 : 5.5, col = o.kid ? C.kid : C.ped, op = o.ghost ? ' opacity="0.55"' : "";
+    add(`<g${op}><circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="#5A1A12" stroke-width="1.2"/><circle cx="${x}" cy="${y}" r="${r*0.45}" fill="#3A2A22"/></g>`);
+  }
+  function ball(x, y){ add(`<circle cx="${x}" cy="${y}" r="3.5" fill="#FFFFFF" stroke="#C0392B" stroke-width="1.5"/>`); }
+  function arrow(d, col){ add(`<path d="${d}" fill="none" stroke="${col || C.me}" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#ah)"/>`); }
+  function label(x, y, t, o = {}){
+    add(`<text x="${x}" y="${y}" text-anchor="${o.anchor || "middle"}" font-family="${JP}" font-weight="700" font-size="${o.size || 11}" fill="${o.color || "#18202B"}" stroke="${o.halo || "#FFFFFF"}" stroke-width="3" paint-order="stroke">${t}</text>`);
+  }
+  // 横型の信号機（左から青・黄・赤）
+  function signal(x, y, state){
+    const lit = { g:"#18B567", y:"#F5B800", r:"#E53935" }, dim = "#3B4048";
+    add(`<rect x="${x-21}" y="${y-8}" width="42" height="16" rx="4" fill="#20252C"/>`);
+    [["g",-13],["y",0],["r",13]].forEach(([k,dx]) => add(`<circle cx="${x+dx}" cy="${y}" r="5" fill="${state===k ? lit[k] : dim}"/>`));
+  }
+  function pedSignal(x, y){
+    add(`<rect x="${x-8}" y="${y-14}" width="16" height="28" rx="3" fill="#20252C"/><circle cx="${x}" cy="${y-6}" r="4.5" fill="#3B4048"/><circle cx="${x}" cy="${y+6}" r="4.5" fill="#18B567"/>`);
+    add(`<circle cx="${x}" cy="${y+6}" r="7.5" fill="none" stroke="#18B567" stroke-width="1.5" stroke-dasharray="3 2"/>`);
+  }
+  function rain(){ let s = ""; for (let i = 0; i < 70; i++){ const x = (i*47)%W, y = (i*83)%H; s += `<line x1="${x}" y1="${y}" x2="${x-5}" y2="${y+12}" stroke="#E8F1FF" stroke-width="1.3" opacity="0.8"/>`; } add(s); }
+  function snow(){ let s = ""; for (let i = 0; i < 80; i++){ const x = (i*53)%W, y = (i*71+i*i)%H; s += `<circle cx="${x}" cy="${y}" r="${1.5+(i%3)}" fill="#FFFFFF" opacity="0.9"/>`; } add(s); }
+  function curveRoad(d, o = {}){
+    add(`<path d="${d}" fill="none" stroke="${o.edgeCol || C.walk}" stroke-width="${(o.w||120)+30}"/>`);
+    add(`<path d="${d}" fill="none" stroke="${o.roadCol || C.road}" stroke-width="${o.w||120}"/>`);
+    add(`<path d="${d}" fill="none" stroke="${o.lineCol || C.line}" stroke-width="3" stroke-dasharray="${o.solid ? "0" : "14 10"}"/>`);
+  }
+
+  const S = {
+    k1(){ ground(); vroad(100,220,{center:"dash"}); veh(124,92,"up","truck",{blink:"both"}); label(124,52,"止まっているトラック"); veh(190,60,"down","car"); label(258,60,"対向車"); hidden(98,128); veh(130,205,"up","me"); },
+    k2(){ ground(); vroad(100,220,{center:"dash"}); hroad(85,150,{center:"dash"}); box(100,85,220,150);
+      crossV(100,220,152,166); crossH(85,150,222,238); stopLine(160,220,70);
+      veh(192,42,"down","truck"); label(268,24,"道を譲ったトラック"); veh(212,52,"down","moto",{ghost:true}); hidden(232,30);
+      veh(146,128,"up","me"); arrow("M146 106 Q150 90 175 98 L 250 102"); person(232,100); label(282,96,"横断中？"); },
+    k3(){ ground(); vroad(100,220,{center:"dash"}); hroad(40,100,{center:"dash"}); box(100,40,220,100);
+      crossV(100,220,102,116); veh(108,170,"up","bike"); label(70,170,"自転車"); veh(136,200,"up","me",{blink:"l"}); arrow("M134 180 L134 140 Q132 82 70 82"); },
+    k4(){ ground("#1F2A22"); vroad(100,220,{center:"dash"}); add(`<rect width="${W}" height="${H}" fill="#08101F" opacity="0.55"/>`);
+      veh(190,70,"down","car",{beam:true}); veh(130,205,"up","me",{beam:true}); person(166,128,{ghost:true}); label(166,150,"見えにくい歩行者",{color:"#FFFFFF",halo:"#08101F"}); label(270,64,"対向車",{color:"#FFFFFF",halo:"#08101F"}); label(40,24,"夜間",{color:"#FFFFFF",halo:"#08101F",size:13}); },
+    k5(){ ground(); vroad(60,260,{center:"white",lanes:[110,210]}); crossV(60,260,74,92); stopLine(60,160,100);
+      veh(85,128,"up","car"); label(85,168,"止まっている車"); hidden(50,84); person(50,84,{ghost:true}); veh(135,205,"up","me"); },
+    k6(){ ground(); vroad(100,220,{center:"dash"}); add(`<rect x="80" y="74" width="4" height="22" fill="#555"/><circle cx="82" cy="72" r="7" fill="#F0C24B" stroke="#555"/>`); label(56,62,"バス停");
+      veh(124,100,"up","bus",{blink:"r"}); label(124,150,"路線バス"); person(140,56,{ghost:true}); veh(130,208,"up","me"); },
+    k7(){ ground(); add(`<polygon points="100,${H} 150,${H} 150,40 138,40" fill="${C.road}"/>`); vroad(150,250,{lanes:[200],walk:false});
+      add(`<line x1="150" y1="40" x2="150" y2="${H}" stroke="${C.line}" stroke-width="2" stroke-dasharray="6 6"/>`);
+      label(120,30,"加速車線"); label(200,18,"本線車道"); veh(134,150,"up","me"); veh(175,212,"up","truck"); label(232,226,"大型トラック"); label(36,120,"高速道路",{size:13}); },
+    k8(){ ground(); vroad(100,220,{center:"dash"}); box(84,92,236,124,"#8A8F96");
+      [98,118].forEach(y => add(`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#4A3B2C" stroke-width="4"/>`));
+      [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].forEach(i => add(`<rect x="${i*22}" y="94" width="5" height="28" fill="#5A4632" opacity="0.6"/>`));
+      add(`<rect x="88" y="128" width="4" height="22" fill="#333"/><line x1="92" y1="132" x2="158" y2="132" stroke="#FFD400" stroke-width="5" stroke-dasharray="8 6"/><line x1="92" y1="132" x2="158" y2="132" stroke="#18202B" stroke-width="5" stroke-dasharray="8 6" stroke-dashoffset="8"/>`);
+      stopLine(100,160,142); label(44,112,"踏切"); veh(130,58,"up","car"); veh(130,14,"up","car"); label(258,40,"渋滞"); veh(130,205,"up","me"); },
+    k9(){ ground(); add(`<rect x="0" y="40" width="84" height="130" fill="#9CCB7C"/>`); [[20,60],[50,80],[24,140]].forEach(([x,y]) => add(`<circle cx="${x}" cy="${y}" r="12" fill="#4E8F3A"/>`)); label(40,182,"公園");
+      vroad(100,220,{center:"dash"}); person(92,92,{kid:true}); person(78,112,{kid:true}); ball(99,104); arrow("M100 104 L126 100", C.ped); veh(130,205,"up","me"); },
+    k10(){ ground("#B9C7B2"); curveRoad("M160 260 L160 150 Q160 70 260 40 L340 20"); veh(132,205,"up","me"); veh(250,64,"left","car"); rain(); label(56,40,"雨・下り坂",{size:13}); },
+    k11(){ ground(); vroad(110,210,{center:"none"}); hroad(80,140,{walk:false}); box(110,80,210,140);
+      [[0,0,110,66],[0,154,110,240],[210,0,320,66],[210,154,320,240]].forEach(([a,b,c,d]) => add(`<rect x="${a}" y="${b}" width="${c-a}" height="${d-b}" fill="#B8A88F"/>`));
+      add(`<rect x="214" y="150" width="3" height="30" fill="#E06A1A"/><circle cx="215" cy="146" r="10" fill="#E9F1F8" stroke="#E06A1A" stroke-width="3"/>`); label(262,190,"カーブミラー");
+      veh(66,118,"right","bike"); label(50,100,"自転車"); veh(136,205,"up","me"); },
+    k12(){ ground(); vroad(100,220,{center:"dash"}); veh(124,60,"up","car",{blink:"both"}); label(70,40,"駐車車両"); veh(118,124,"up","bike"); arrow("M122 108 Q128 90 146 80", C.bike); veh(134,205,"up","me"); },
+    ka1(){ ground(); vroad(100,220,{center:"dash"}); hroad(40,100,{center:"dash"}); box(100,40,220,100); crossV(100,220,102,118);
+      signal(70,126,"g"); label(70,148,"車両用：青"); pedSignal(254,126); label(258,152,"歩行者用：点滅"); veh(130,165,"up","me"); veh(130,222,"up","car"); label(176,226,"後続車"); },
+    ka2(){ ground(); vroad(100,220,{center:"dash"}); hroad(85,150,{center:"dash"}); box(100,85,220,150); crossV(100,220,152,166); crossH(85,150,222,238);
+      veh(146,128,"up","me",{blink:"r"}); arrow("M146 106 Q150 90 175 98 L 250 102"); veh(190,52,"down","moto"); label(226,46,"二輪車"); veh(190,10,"down","truck"); person(232,138); },
+    ka3(){ ground(); vroad(60,260,{center:"white",lanes:[110,210]}); veh(84,84,"up","car",{blink:"both"}); label(84,52,"駐車車両"); veh(85,200,"up","me",{blink:"r"}); veh(135,232,"up","car"); label(182,214,"後方から接近"); },
+    kb1(){ ground("#B9C7B2"); curveRoad("M160 260 L160 170 Q160 100 260 80 L340 70"); veh(132,215,"up","me");
+      veh(226,66,"right","car",{blink:"both"}); veh(268,57,"right","car",{blink:"both"}); veh(306,52,"right","truck",{blink:"both"}); label(262,130,"渋滞の最後尾"); label(52,40,"高速道路",{size:13}); },
+    kb2(){ ground(); vroad(100,220,{center:"dash"}); veh(124,62,"up","car",{blink:"both"}); label(70,46,"駐車車両"); veh(112,126,"up","kick"); label(66,128,"電動キックボード"); arrow("M114 110 Q120 92 140 84", "#7A4FC0"); veh(134,205,"up","me"); },
+    kb3(){ ground(); vroad(100,220,{center:"dash"}); veh(124,100,"up","car",{door:true}); label(66,92,"ドアが開きかけ"); person(142,92,{ghost:true}); veh(190,36,"down","car"); veh(130,205,"up","me"); },
+    kc1(){ ground(); vroad(100,220,{center:"dash"}); stopLine(100,160,40); signal(70,26,"r"); veh(130,100,"up","car"); veh(130,200,"up","me");
+      label(272,130,"上り坂",{size:13}); add(`<path d="M260 160 l12 -14 l12 14" fill="none" stroke="#18202B" stroke-width="3"/>`); },
+    kc2(){ ground("#EEF3F7"); curveRoad("M160 260 L160 120 Q160 40 260 30 L340 24",{roadCol:"#C9D3DC", edgeCol:"#FFFFFF", lineCol:"#9AA6B2"});
+      add(`<line x1="96" y1="100" x2="96" y2="170" stroke="#5A6573" stroke-width="5"/><line x1="224" y1="100" x2="224" y2="170" stroke="#5A6573" stroke-width="5"/>`); label(56,140,"橋");
+      veh(132,212,"up","me"); snow(); label(250,90,"下り坂のカーブ"); label(46,24,"雪道",{size:13}); },
+    kc3(){ ground(); hroad(30,104,{center:"dash",walk:false}); add(`<rect x="0" y="104" width="${W}" height="30" fill="${C.walk}"/>`); label(38,124,"歩道");
+      add(`<rect x="0" y="134" width="${W}" height="${H-134}" fill="#B7BEC6"/>`); [40,80,200,240,280].forEach(x => add(`<rect x="${x}" y="150" width="2" height="60" fill="#FFFFFF"/>`)); label(60,228,"駐車場");
+      veh(228,86,"left","truck"); label(270,64,"止まっているトラック"); veh(150,170,"up","me"); stopLine(130,170,138); hidden(296,92); person(96,118,{ghost:true}); }
+  };
+  return function(id){
+    if (!S[id]) return "";
+    out = [];
+    S[id]();
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="場面の見下ろし図" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="${C.me}"/></marker></defs>${out.join("")}<rect x="0.5" y="0.5" width="${W-1}" height="${H-1}" fill="none" stroke="#18202B" stroke-opacity="0.25"/></svg>`;
+  };
+})();
+function sceneFig(id){ const s = ART(id); return s ? `<figure class="sfig">${s}<figcaption>真上から見た図。<b class="me">青い車</b>が自分の車、<span class="q">?</span>は見えていないかもしれない相手。</figcaption></figure>` : ""; }
+
 /* ---------- 記録 ---------- */
 const KEY = "futamata-drill-v1";
 let S = { r:{}, mocks:[], day:"", today:0 };
@@ -872,6 +1037,7 @@ function renderItem(){
   const head = `<div class="qhead"><span class="eyebrow">${esc(SESS.title)}</span><span class="small muted">${SESS.i+1} / ${SESS.queue.length}</span></div><div class="progress"><i style="width:${pct}%"></i></div>`;
   if (x.c === "risk"){
     app.innerHTML = `<section class="view">${head}<div class="card">${tags}
+      ${sceneFig(id)}
       <div class="scene">${esc(x.scene)}<br><span class="small" style="font-weight:500">どのようなことに注意して運転しますか。</span></div>
       ${x.items.map((it,k) => `<div class="ritem" data-k="${k}"><p>(${k+1}) ${esc(it[0])}</p><div class="mini"><button data-v="1" aria-label="正しい">○</button><button data-v="0" aria-label="誤り">×</button></div></div>`).join("")}
       <button class="btn blue" id="check" disabled>答え合わせ</button><div id="fb"></div></div></section>`;
@@ -938,7 +1104,7 @@ function sessionResult(){
 }
 function reviewRow(id, given){
   const x = ALL[id];
-  if (x.c === "risk") return `<div class="weak"><span class="tag">${CATS.risk}</span><p><b>${esc(x.scene)}</b></p>${x.items.map((it,k)=>`<p class="small">(${k+1}) ${esc(it[0])} → <b>${it[1]?"○":"×"}</b>${given && given[k]!==it[1] ? '（あなた：' + (given[k]===null||given[k]===undefined?"未回答":given[k]?"○":"×") + '）' : ""}<br><span class="muted">${esc(it[2])}</span></p>`).join("")}${srcHtml(x)}</div>`;
+  if (x.c === "risk") return `<div class="weak"><span class="tag">${CATS.risk}</span>${sceneFig(id)}<p><b>${esc(x.scene)}</b></p>${x.items.map((it,k)=>`<p class="small">(${k+1}) ${esc(it[0])} → <b>${it[1]?"○":"×"}</b>${given && given[k]!==it[1] ? '（あなた：' + (given[k]===null||given[k]===undefined?"未回答":given[k]?"○":"×") + '）' : ""}<br><span class="muted">${esc(it[2])}</span></p>`).join("")}${srcHtml(x)}</div>`;
   return `<div class="weak">${x.s ? `<div class="signbox" style="justify-content:flex-start">${signSvg(x.s).replace("<svg ", '<svg style="width:70px;height:70px" ')}</div>` : ""}
     <p><b>${esc(x.q)}</b></p><p class="small">正答 <b>${x.a?"○":"×"}</b>${given !== undefined ? "（あなた：" + (given === 1 ? "○" : given === 0 ? "×" : "未回答") + "）" : ""}　${esc(x.e)}</p>${srcHtml(x)}</div>`;
 }
@@ -972,7 +1138,7 @@ function renderMock(){
   let body;
   if (x.c === "risk"){
     const cur = MOCK.ans[id] || [null,null,null];
-    body = `<span class="tag freq">危険予測（2点）</span><div class="scene">${esc(x.scene)}<br><span class="small" style="font-weight:500">どのようなことに注意して運転しますか。</span></div>
+    body = `<span class="tag freq">危険予測（2点）</span>${sceneFig(id)}<div class="scene">${esc(x.scene)}<br><span class="small" style="font-weight:500">どのようなことに注意して運転しますか。</span></div>
       ${x.items.map((it,k) => `<div class="ritem" data-k="${k}"><p>(${k+1}) ${esc(it[0])}</p><div class="mini"><button data-v="1" class="${cur[k]===1?"sel":""}" aria-label="正しい">○</button><button data-v="0" class="${cur[k]===0?"sel":""}" aria-label="誤り">×</button></div></div>`).join("")}`;
   } else {
     const cur = MOCK.ans[id];
