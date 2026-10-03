@@ -998,7 +998,7 @@ function renderHome(){
     <button class="entry" data-go="weak"><span class="ic" style="background:var(--stop-soft);color:var(--stop)">${weak}</span>
       <span><h3>苦手克服</h3><p>${weak ? "間違えた問題だけを出題。2回連続で正解すると苦手から外れます。" : "まだ苦手はありません。ドリルを解くとここに溜まります。"}</p></span><span class="chev">›</span></button>
     <button class="entry" data-go="risk"><span class="ic" style="background:var(--amber-soft);color:var(--ink)">2点</span>
-      <span><h3>危険予測 3場面</h3><p>イラスト問題の形式。3つとも正解で2点、1つでも間違えると0点。</p></span><span class="chev">›</span></button>
+      <span><h3>危険予測 5場面</h3><p>全${RISK.length}場面から、本番と同じ5場面。3つとも正解で2点、1つでも間違えると0点。</p></span><span class="chev">›</span></button>
     <h3>分野別に練習</h3>
     <div class="grid2">${Object.keys(CATS).filter(c => c !== "risk").map(c => {
       const r = catRate(c); const pct = r === null ? 0 : Math.round(r*100);
@@ -1016,7 +1016,7 @@ function renderHome(){
       if (w.length) startSession(w.slice(0,15), "苦手克服");
       else startSession(pickBy(Q.map(x=>x.id), 10), "お手軽10問");
     }
-    if (k === "risk") startSession(pickBy(RISK.map(x=>x.id), 3), "危険予測");
+    if (k === "risk") startSession(pickBy(RISK.map(x=>x.id), 5), "危険予測");
     if (k === "mock") startMock();
   });
   app.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => startSession(pickBy(idsOfCat(b.dataset.cat), 10), CATS[b.dataset.cat]));
