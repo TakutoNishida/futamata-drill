@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>二俣川 学科ドリル</title>
+<meta name="description" content="神奈川県運転免許センター（二俣川）の本免学科対策。お手軽10問と95問の模擬試験。">
+<meta name="theme-color" content="#1D4F9E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="学科ドリル">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+html{color-scheme:light}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+/* Layout: one-column phone app — sticky header, single working view, bottom tab bar */
+:root{
+  --bg:#EEF1F5; --surface:#FFFFFF; --ink:#18202B; --muted:#5A6573; --line:#D3DAE3;
+  --sign:#1D4F9E; --sign-soft:#DCE6F5;
+  --stop:#C62828; --stop-soft:#F8E0DE;
+  --go:#1E7A4C; --go-soft:#DBEFE3;
+  --amber:#E8A317; --amber-soft:#FBEFD2;
+  --display:"Dela Gothic One","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10141A; --surface:#19202A; --ink:#E8EDF3; --muted:#9AA6B5; --line:#2A3441;
+  --sign:#6E9EEB; --sign-soft:#1B2A43; --stop:#FF6F61; --stop-soft:#3A1E1C;
+  --go:#5CC48E; --go-soft:#183326; --amber:#F2B84B; --amber-soft:#382B12; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#10141A; --surface:#19202A; --ink:#E8EDF3; --muted:#9AA6B5; --line:#2A3441;
+  --sign:#6E9EEB; --sign-soft:#1B2A43; --stop:#FF6F61; --stop-soft:#3A1E1C;
+  --go:#5CC48E; --go-soft:#183326; --amber:#F2B84B; --amber-soft:#382B12; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.wrap{max-width:580px;margin:0 auto;padding-inline:16px;padding-block:0 110px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo{min-width:0}
+.logo .plate{background:var(--go);color:#fff;font-family:var(--display);font-size:13px;padding:3px 8px;border-radius:6px;letter-spacing:.04em;white-space:nowrap;flex:none}
+.logo b{font-family:var(--display);font-weight:400;font-size:17px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pill{white-space:nowrap;flex:none}
+.pill{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:13px;font-variant-numeric:tabular-nums}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav.tabs button{background:none;border:0;padding:10px 4px 12px;font-size:12px;font-weight:700;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:3px}
+nav.tabs button svg{width:22px;height:22px}
+nav.tabs button[aria-current="page"]{color:var(--sign)}
+h1,h2,h3{text-wrap:balance;line-height:1.35;margin:0}
+h2{font-size:21px} h3{font-size:16px}
+.view{display:flex;flex-direction:column;gap:16px;padding-top:16px}
+.muted{color:var(--muted)} .small{font-size:13px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--muted)}
+p{margin:0}
+/* home */
+.hero{background:var(--sign);color:#fff;border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:10px}
+.hero h2{color:#fff;font-size:18px}
+.hero .big{font-family:var(--display);font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.hero .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hero .k{font-size:12px;opacity:.85}
+.hero .v{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.entry{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:15px}
+.entry .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-family:var(--display);font-size:18px}
+.entry p{margin-top:2px;font-size:13px;color:var(--muted)}
+.entry .badge{font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px}
+.chev{color:var(--muted)}
+.note{background:var(--amber-soft);border-radius:12px;padding:12px 14px;font-size:13px}
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.tagrow{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;background:var(--sign-soft);color:var(--sign)}
+.tag.retry{background:var(--stop-soft);color:var(--stop)}
+.tag.freq{background:var(--amber-soft);color:var(--ink)}
+.progress{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--sign);transition:width .3s}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px}
+.qtext{font-size:18px;font-weight:700;line-height:1.65}
+.signbox{display:flex;justify-content:center;padding:6px 0}
+.signbox svg{width:130px;height:130px;max-width:100%}
+.ox{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ox button{border:2px solid var(--line);background:var(--surface);border-radius:14px;padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:700}
+.ox .mk{font-family:var(--display);font-size:34px;line-height:1.1}
+.ox .o .mk{color:var(--go)} .ox .x .mk{color:var(--stop)}
+.ox button.sel{border-color:var(--sign);background:var(--sign-soft)}
+.ox button.right{border-color:var(--go);background:var(--go-soft)}
+.ox button.wrong{border-color:var(--stop);background:var(--stop-soft)}
+.ox button:disabled{cursor:default}
+.explain{border-radius:12px;padding:14px;border:1px solid var(--line);background:var(--bg);display:flex;flex-direction:column;gap:6px}
+.verdict{font-weight:700}
+.verdict.good{color:var(--go)} .verdict.bad{color:var(--stop)}
+.btn{border:0;border-radius:12px;padding:14px 16px;font-weight:700;background:var(--ink);color:var(--bg);width:100%}
+.btn.alt{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.btn.blue{background:var(--sign);color:#fff}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>*{flex:1 1 140px}
+/* risk */
+.scene{background:var(--sign-soft);border-radius:12px;padding:14px;font-weight:700;line-height:1.7}
+.ritem{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border-top:1px solid var(--line);padding-top:12px}
+.ritem p{font-size:15px;min-width:0}
+.mini{display:flex;gap:6px}
+.mini button{width:46px;height:42px;border-radius:10px;border:2px solid var(--line);background:var(--surface);font-family:var(--display);font-size:20px}
+.mini button.sel{border-color:var(--sign);background:var(--sign-soft)}
+.mini button.right{border-color:var(--go);background:var(--go-soft)}
+.mini button.wrong{border-color:var(--stop);background:var(--stop-soft)}
+.rexp{grid-column:1/-1;font-size:14px;color:var(--muted)}
+/* lists */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px;text-align:left;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cat .t{font-weight:700;font-size:15px}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px;background:var(--go)}
+.bar i.mid{background:var(--amber)} .bar i.low{background:var(--stop)}
+.statrow{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}
+.statrow .pct{font-variant-numeric:tabular-nums;font-weight:700}
+.weak{border-left:4px solid var(--stop);background:var(--surface);border-radius:0 12px 12px 0;padding:14px;display:flex;flex-direction:column;gap:8px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+th{font-size:12px;color:var(--muted);letter-spacing:.06em}
+td.num{font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--sign)}
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px 10px}
+.signs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.signcell{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.signcell svg{width:96px;height:96px}
+.signcell b{font-size:14px}
+.signcell span{font-size:12px;color:var(--muted)}
+/* mock */
+.jump{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:5px}
+.jump button{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:5px 0;font-size:12px;font-variant-numeric:tabular-nums}
+.jump button.done{background:var(--sign-soft);border-color:var(--sign)}
+.jump button.cur{outline:2px solid var(--ink)}
+.jump button.ng{background:var(--stop-soft);border-color:var(--stop)}
+.src{display:flex;flex-direction:column;gap:4px;border-top:1px dashed var(--line);padding-top:8px}
+.src a{color:var(--sign);font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px;word-break:break-word}
+.big2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bigbtn{border:0;border-radius:var(--r);padding:16px 14px;text-align:left;display:flex;flex-direction:column;gap:4px;min-width:0}
+.bigbtn .t{font-family:var(--display);font-size:19px;line-height:1.25}
+.bigbtn .d{font-size:12px;opacity:.9}
+.bigbtn.quick{background:var(--amber);color:#18202B}
+.bigbtn.mock{background:var(--go);color:#fff}
+@media (max-width:360px){.big2{grid-template-columns:1fr}}
+.score{text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.score .n{font-family:var(--display);font-size:64px;line-height:1;font-variant-numeric:tabular-nums}
+.pass{color:var(--go)} .fail{color:var(--stop)}
+.confirm{background:var(--stop-soft);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="logo"><span class="plate">神奈川</span><b>二俣川 学科ドリル</b></div>
+    <span class="pill" id="streak">今日 0問</span>
+  </header>
+  <main id="app"></main>
+</div>
+<nav class="tabs" id="tabs">
+  <button data-t="home" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>ホーム</button>
+  <button data-t="stats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>苦手分析</button>
+  <button data-t="signs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l10 10-10 10L2 12z"/></svg>標識</button>
+  <button data-t="nums"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>数字まとめ</button>
+</nav>
+
+<script>
+/* ---------- 標識（すべてインラインSVG。外部画像は使わない） ---------- */
+const JP = "'Zen Kaku Gothic New','Hiragino Sans','Noto Sans JP','Yu Gothic','Meiryo',sans-serif";
+function tri(inner){ // 一時停止：赤地・白文字（細い白線と赤の外縁）
+  return `<polygon points="3,9 97,9 50,95" fill="#E5262B"/>
+          <polygon points="7,11.5 93,11.5 50,90" fill="none" stroke="#FFFFFF" stroke-width="1.6"/>${inner}`;
+}
+const SIGNS = {
+  stop:{name:"一時停止（止まれ）",kind:"規制標識",svg:tri(`<text x="50" y="42" text-anchor="middle" font-family="${JP}" font-weight="700" font-size="17" fill="#FFFFFF" textLength="44" lengthAdjust="spacingAndGlyphs">止まれ</text><text x="50" y="56" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="9" fill="#FFFFFF">STOP</text>`)},
+  slow:{name:"徐行",kind:"規制標識",svg:`<polygon points="3,9 97,9 50,95" fill="#E5262B"/><polygon points="17,17 83,17 50,78" fill="#FFFFFF"/><text x="50" y="37" text-anchor="middle" font-family="${JP}" font-weight="700" font-size="15" fill="#1E5BB8" textLength="30" lengthAdjust="spacingAndGlyphs">徐行</text><text x="50" y="50" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="9" fill="#1E5BB8" textLength="26" lengthAdjust="spacingAndGlyphs">SLOW</text>`},
+  noentry:{name:"車両進入禁止",kind:"規制標識",svg:`<circle cx="50" cy="50" r="46" fill="#FFFFFF" stroke="#9AA3AD" stroke-width="1.5"/><circle cx="50" cy="50" r="42" fill="#D32F2F"/><rect x="18" y="42" width="64" height="16" fill="#FFFFFF"/>`},
+  closed:{name:"車両通行止め",kind:"規制標識",svg:`<circle cx="50" cy="50" r="46" fill="#D32F2F"/><circle cx="50" cy="50" r="37" fill="#FFFFFF"/><line x1="24" y1="24" x2="76" y2="76" stroke="#D32F2F" stroke-width="9"/>`},
+  nostop:{name:"駐停車禁止",kind:"規制標識",svg:`<circle cx="50" cy="50" r="46" fill="#D32F2F"/><circle cx="50" cy="50" r="37" fill="#1E5BB8"/><line x1="24" y1="24" x2="76" y2="76" stroke="#D32F2F" stroke-width="9"/><line x1="76" y1="24" x2="24" y2="76" stroke="#D32F2F" stroke-width="9"/>`},
+  nopark:{name:"駐車禁止",kind:"規制標識",svg:`<circle cx="50" cy="50" r="46" fill="#D32F2F"/><circle cx="50" cy="50" r="37" fill="#1E5BB8"/><line x1="24" y1="24" x2="76" y2="76" stroke="#D32F2F" stroke-width="9"/>`},
+  max50:{name:"最高速度（時速50km）",kind:"規制標識",svg:`<circle cx="50" cy="50" r="46" fill="#D32F2F"/><circle cx="50" cy="50" r="37" fill="#FFFFFF"/><text x="50" y="63" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="38" fill="#1E5BB8" textLength="46" lengthAdjust="spacingAndGlyphs">50</text>`},
+  min30:{name:"最低速度（時速30km）",kind:"規制標識",svg:`<circle cx="50" cy="50" r="46" fill="#D32F2F"/><circle cx="50" cy="50" r="37" fill="#FFFFFF"/><text x="50" y="60" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="34" fill="#1E5BB8" textLength="42" lengthAdjust="spacingAndGlyphs">30</text><rect x="29" y="66" width="42" height="4" fill="#1E5BB8"/>`},
+  oneway:{name:"一方通行",kind:"規制標識",svg:`<rect x="4" y="28" width="92" height="44" rx="4" fill="#1E5BB8"/><rect x="8" y="32" width="84" height="36" rx="2" fill="none" stroke="#FFFFFF" stroke-width="2"/><polygon points="16,45 60,45 60,37 84,50 60,63 60,55 16,55" fill="#FFFFFF"/>`},
+  parkok:{name:"駐車可",kind:"指示標識",svg:`<rect x="10" y="10" width="80" height="80" rx="6" fill="#1E5BB8"/><text x="50" y="72" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="58" fill="#FFFFFF">P</text>`},
+  stopok:{name:"停車可",kind:"指示標識",svg:`<rect x="10" y="10" width="80" height="80" rx="6" fill="#1E5BB8"/><text x="50" y="69" text-anchor="middle" font-family="${JP}" font-weight="700" font-size="50" fill="#FFFFFF" textLength="50" lengthAdjust="spacingAndGlyphs">停</text>`},
+  danger:{name:"その他の危険",kind:"警戒標識",svg:`<polygon points="50,3 97,50 50,97 3,50" fill="#18202B"/><polygon points="50,7 93,50 50,93 7,50" fill="#FFC21A"/><polygon points="43,24 57,24 53,60 47,60" fill="#18202B"/><circle cx="50" cy="69" r="6" fill="#18202B"/>`}
+};
+function signSvg(k, label){ return `<svg viewBox="0 0 100 100" role="img" aria-label="${label||SIGNS[k].name}" xmlns="http://www.w3.org/2000/svg">${SIGNS[k].svg}</svg>`; }
+
+/* ---------- 分野・つまずきタイプ ---------- */
+const CATS = {
+  sig:"信号・手信号", sign:"標識・標示", int:"交差点・優先", spd:"速度・追い越し・進路変更",
+  park:"駐車・停車", ped:"歩行者・自転車", hw:"高速道路", rule:"免許・運転者の心得",
+  env:"夜間・悪天候・踏切・坂道", car:"車の知識・積載・事故", risk:"危険予測（イラスト問題）"
+};
+const TAGS = {
+  num:{n:"数字（m・km・倍）",tip:"距離と速度はセットで覚えるのが近道。「交差点・横断歩道・曲がり角は5m」「踏切・安全地帯・バス停は10m」「消防関係は5m、火災報知機だけ1m、車庫の出入口は3m」。数字まとめタブの表を1日1回眺めてください。"},
+  exc:{n:"例外（〜を除き・ただし）",tip:"原則だけで答えると落とす問題です。「信号機がある」「優先道路を通行中」「車両通行帯がある」「一方通行」の4つが出たら例外のサイン。問題文の条件を最後まで読んでから○×を決めましょう。"},
+  word:{n:"言い回し（必ず・〜すればよい）",tip:"「必ず」「どんな場合でも」「〜すればよい」「〜してもよい」は誤りのことが多い言い回しです。逆に、法律どおりの義務（一時停止・徐行）を「〜すればよい」と緩めた文は×になります。"},
+  pri:{n:"優先関係",tip:"優先の強さは「緊急自動車 ＞ 路面電車 ＞ 優先道路・広い道路の車 ＞ 左方の車」。直進・左折車は右折車より優先。先に交差点に入っていても右折車は優先になりません。"},
+  new:{n:"新ルール（2022〜2026年の改正）",tip:"2026年9月から中央線のない生活道路は法定30km/h、2026年4月から自転車の右側を通過するときは十分な間隔か安全な速度、2022年から積載は長さ・幅とも1.2倍。古い参考書と答えが違うので要注意です。"},
+  read:{n:"標識・標示の読み取り",tip:"色と形で分類しましょう。赤い縁の丸＝規制（禁止）、青い四角＝指示（できる）、黄色のひし形＝警戒（注意）。駐車禁止は斜線1本、駐停車禁止は×（2本）です。"}
+};
+
+/* ---------- 問題データ ----------
+   f: 頻出度の目安（3=毎回のように出る定番 / 2=よく出る / 1=ときどき）
+   a: 1=正しい（○） 0=誤り（×）
+   すべて道路交通法・同施行令・交通の教則に基づくオリジナル問題（実際の過去問の転載ではない） */
+const Q = [
+/* 信号・手信号 */
+{id:"s1",c:"sig",f:3,t:["exc"],a:1,q:"黄色の灯火の信号に変わったとき、停止位置に近づいていて安全に停止できない場合は、そのまま進むことができる。",e:"黄色の灯火は「停止位置から先へ進んではいけない」が原則ですが、停止位置に近づいていて安全に停止できない場合はそのまま進めます。"},
+{id:"s2",c:"sig",f:3,t:[],a:0,q:"黄色の灯火の点滅信号では、車は停止位置で一時停止しなければならない。",e:"黄色の点滅は「他の交通に注意して進める」。一時停止が必要なのは赤色の点滅です。"},
+{id:"s3",c:"sig",f:3,t:[],a:1,q:"赤色の灯火の点滅信号では、車は停止位置で一時停止し、安全を確かめた後に進むことができる。",e:"赤の点滅は「一時停止してから、安全確認して進める」。"},
+{id:"s4",c:"sig",f:3,t:["word"],a:0,q:"赤色の灯火の点滅信号の交差点では、徐行して安全を確かめれば、一時停止しないで進むことができる。",e:"赤の点滅は一時停止が必要です。徐行では足りません。黄色の点滅（注意して進める）と混同しないこと。"},
+{id:"s5",c:"sig",f:3,t:["exc"],a:1,q:"赤色の灯火の信号でも、同時に青色の右向きの矢印が表示されていれば、自動車は右折することができる。",e:"青の矢印信号が出ていれば、自動車は赤信号でも矢印の方向へ進めます（右折矢印の場合、軽車両と二段階右折の原付は進めません）。"},
+{id:"s6",c:"sig",f:2,t:["exc"],a:1,q:"青色の右向きの矢印信号のとき、二段階右折の方法で右折する原動機付自転車は右折してはならない。",e:"右折の矢印信号で右折できないのは、軽車両と二段階右折しなければならない原付です。"},
+{id:"s7",c:"sig",f:3,t:[],a:0,q:"警察官が腕を水平に上げているとき、警察官の身体の正面に対面する交通については、青色の灯火信号と同じ意味である。",e:"腕を水平に上げているとき、対面する交通は「赤」、平行する交通が「青」です。"},
+{id:"s8",c:"sig",f:3,t:[],a:0,q:"警察官が腕を水平に上げているとき、警察官の身体の正面に平行する交通については、黄色の灯火信号と同じ意味である。",e:"腕を水平に上げているとき、平行する交通は「青」と同じです。黄色になるのは「腕を垂直に上げている」ときの平行する交通。"},
+{id:"s9",c:"sig",f:2,t:[],a:1,q:"警察官が腕を垂直に上げているとき、警察官の身体の正面に平行する交通については、黄色の灯火信号と同じ意味である。",e:"腕を垂直に上げている場合：対面する交通は赤、平行する交通は黄。"},
+{id:"s10",c:"sig",f:2,t:[],a:0,q:"警察官が灯火を頭上に上げているとき、警察官の身体の正面に対面する交通については、黄色の灯火信号と同じ意味である。",e:"灯火を頭上に上げているときは、対面する交通は「赤」、平行する交通が「黄」です。"},
+{id:"s11",c:"sig",f:3,t:["pri"],a:0,q:"信号機の信号と警察官の手信号が異なるときは、信号機の信号に従わなければならない。",e:"警察官や交通巡視員の手信号・灯火信号が優先します。"},
+{id:"s12",c:"sig",f:3,t:[],a:1,q:"前方の信号が青色でも、交差点の先が混雑していて交差点内で止まってしまうおそれがあるときは、交差点に入ってはならない。",e:"交差点内で停止して他の交通を妨げるおそれがあるときは、青信号でも進入できません。"},
+{id:"s13",c:"sig",f:1,t:[],a:0,q:"停止線のない信号機のある交差点で、交差点の手前に横断歩道があるときに信号が赤になったら、交差点の直前で停止すればよい。",e:"停止線がなく横断歩道があるときは、横断歩道の直前で停止します。交差点の直前で止まるのは、停止線も横断歩道・自転車横断帯もないときです。"},
+
+/* 標識・標示 */
+{id:"g1",c:"sign",f:3,t:["read"],s:"stop",a:1,q:"この標識のある交差点では、停止線の直前（停止線がない場合は交差点の直前）で一時停止しなければならない。",e:"「一時停止」の規制標識。赤い逆三角形に「止まれ」。"},
+{id:"g2",c:"sign",f:2,t:["read"],s:"slow",a:0,q:"この標識は「一時停止」を表している。",e:"これは「徐行」の標識です。一時停止は赤地に白い「止まれ」、徐行は白地に赤い縁と青い「徐行」の文字です。"},
+{id:"g3",c:"sign",f:3,t:["read"],s:"noentry",a:0,q:"この標識は「車両通行止め」を表している。",e:"赤地に白い横棒は「車両進入禁止」。車両通行止めは白地に赤い縁と赤い斜線1本の標識です。"},
+{id:"g4",c:"sign",f:2,t:["read"],s:"closed",a:1,q:"この標識のある道路は、自動車だけでなく、原動機付自転車や自転車も通行することができない。",e:"白地に赤い縁と赤い斜線は「車両通行止め」。車両には軽車両（自転車）も含まれます。歩行者は通行できます。"},
+{id:"g5",c:"sign",f:2,t:["read"],s:"closed",a:0,q:"この標識は「通行止め」を表し、車も歩行者も通行することができない。",e:"これは「車両通行止め」。歩行者まで通行できない「通行止め」は別の標識です。"},
+{id:"g6",c:"sign",f:3,t:["read"],s:"nostop",a:0,q:"この標識のある場所では、駐車はできないが、停車はすることができる。",e:"×印（斜線2本）は「駐停車禁止」なので、停車もできません。斜線1本の「駐車禁止」なら停車はできます。"},
+{id:"g7",c:"sign",f:3,t:["read"],s:"nopark",a:0,q:"この標識のある場所では、駐車だけでなく停車もしてはならない。",e:"斜線1本は「駐車禁止」。停車はできます。"},
+{id:"g8",c:"sign",f:2,t:["read","num"],s:"nopark",a:1,q:"この標識のある場所でも、5分以内の荷物の積みおろしのための停止はすることができる。",e:"5分以内の荷物の積みおろしは「停車」なので、駐車禁止の場所でもできます。5分を超えると駐車です。"},
+{id:"g9",c:"sign",f:2,t:["read"],s:"max50",a:0,q:"この標識は、時速50kmに達しない速度で通行してはならないことを表している。",e:"数字の下に線がないので「最高速度」。時速50kmを超えてはいけないという意味です。線があれば最低速度です。"},
+{id:"g13",c:"sign",f:2,t:["read"],s:"min30",a:1,q:"この標識は、時速30kmに達しない速度で通行してはならないこと（最低速度）を表している。",e:"数字の下に線があるのが「最低速度」。線がなければ「最高速度」です。"},
+{id:"g27",c:"sign",f:1,t:["read"],s:"stopok",a:0,q:"この標識は「駐車可」を表している。",e:"青い四角に「停」は「停車可」。駐車可は「P」です。"},
+{id:"g10",c:"sign",f:2,t:["read"],a:1,q:"速度の数字の下に線が引かれている標識は「最低速度」を表し、その速度に達しない速度で通行してはならない。",e:"数字の下の線（アンダーライン）が最低速度の目印。線がなければ最高速度です。"},
+{id:"g11",c:"sign",f:2,t:["read"],s:"oneway",a:1,q:"この標識は「一方通行」を表し、車は矢印の方向にだけ通行することができる。",e:"青い長方形に白い矢印は「一方通行」。"},
+{id:"g12",c:"sign",f:1,t:["read"],s:"parkok",a:1,q:"この標識は「駐車可」を表している。",e:"青い四角に白い「P」は「駐車可」、「停」は「停車可」の指示標識。"},
+{id:"g14",c:"sign",f:1,t:["read"],s:"danger",a:0,q:"この標識は、前方に信号機があることを表す警戒標識である。",e:"黄色のひし形に「！」は「その他の危険」。信号機ありの警戒標識は信号機の絵が描かれています。"},
+{id:"g15",c:"sign",f:2,t:["read"],a:0,q:"規制標識の下に「8-20」と書かれた補助標識があるときは、8時から20時までの時間帯を除いて規制が適用されることを表している。",e:"「8-20」は、8時から20時までの間だけ規制が適用されるという意味です。"},
+{id:"g16",c:"sign",f:3,t:["read"],a:0,q:"白の破線の中央線が引かれた道路では、追い越しのために道路の右側部分にはみ出して通行してはならない。",e:"白の破線の中央線は、追い越しのためのはみ出しが禁止されていません。はみ出し禁止は黄色の実線です。"},
+{id:"g17",c:"sign",f:3,t:["read"],a:1,q:"黄色の実線の中央線が引かれた道路では、追い越しのため道路の右側部分にはみ出して通行してはならない。",e:"黄色の中央線は「追越しのための右側部分はみ出し通行禁止」。"},
+{id:"g18",c:"sign",f:2,t:["read","exc"],a:1,q:"黄色の実線の中央線が引かれた道路でも、右折して道路外の施設に入るために中央線を横切ることはできる。",e:"黄色の中央線が禁止しているのは「追い越しのためのはみ出し」。右折して道路外へ出るための横断は禁止されていません（「転回禁止」「右折禁止」などの標識があれば別）。"},
+{id:"g19",c:"sign",f:3,t:["read"],a:0,q:"道路にひし形の標示があるときは、その前方に交差点があることを表している。",e:"ひし形マークは「前方に横断歩道または自転車横断帯あり」の予告です。"},
+{id:"g20",c:"sign",f:2,t:["read"],a:1,q:"「停止禁止部分」の標示があるときは、前方の交通が混雑していてその中で停止するおそれがあれば、その部分に入ってはならない。",e:"停止禁止部分（白の斜線枠）の中で止まってはいけません。"},
+{id:"g21",c:"sign",f:2,t:["read"],a:0,q:"安全地帯の標示がある場所でも、歩行者がいなければ車が入って通行してよい。",e:"安全地帯には、歩行者の有無に関係なく車は入れません。"},
+{id:"g22",c:"sign",f:2,t:["read","num"],a:0,q:"白の実線1本で幅が0.75mを超える路側帯のある道路で駐停車するときは、路側帯に入らずに車道の左端に沿って止めなければならない。",e:"幅が0.75mを超える白の実線1本の路側帯なら、中に入り、車の左側に0.75m以上の余地をあけて止めます。入れないのは幅0.75m以下のとき、駐停車禁止路側帯、歩行者用路側帯です。"},
+{id:"g23",c:"sign",f:2,t:["read"],a:1,q:"白の破線と実線で示された路側帯（駐停車禁止路側帯）のある道路では、路側帯に入らずに車道の左端に沿って駐停車しなければならない。",e:"駐停車禁止路側帯・歩行者用路側帯（実線2本）には入れません。"},
+{id:"g24",c:"sign",f:2,t:["read"],a:0,q:"白の実線2本で示された路側帯（歩行者用路側帯）のある道路では、路側帯の中に入って駐停車することができる。",e:"歩行者用路側帯には入って駐停車できません。車道の左端に沿って止めます。"},
+{id:"g25",c:"sign",f:2,t:["read"],a:1,q:"車両通行帯の境界線が黄色の線で示されている場合、その黄色の線を越えて進路を変更してはならない。",e:"黄色の車線境界線は「進路変更禁止」。黄色の線側からは越えられません。"},
+{id:"g26",c:"sign",f:2,t:["read"],a:1,q:"交差点の中まで中央線や車両通行帯境界線が引かれている道路は、優先道路である。",e:"「優先道路」の標識がある道路のほか、交差点の中まで中央線などが続いている道路も優先道路です。"},
+
+/* 交差点・優先 */
+{id:"i1",c:"int",f:3,t:["pri"],a:0,q:"信号機のない同じような幅の道路の交差点では、右方から進行してくる車が優先する。",e:"同じ幅の道路なら「左方優先」です。"},
+{id:"i2",c:"int",f:3,t:["pri"],a:0,q:"信号機のない交差点で、路面電車が右方から進行してくるときは、自動車のほうが優先する。",e:"路面電車は左方・右方に関係なく優先します。"},
+{id:"i3",c:"int",f:3,t:["pri"],a:1,q:"信号機のない交差点で、交差する道路が優先道路のときは、徐行して優先道路を通行する車の進行を妨げてはならない。",e:"優先道路や、明らかに幅が広い道路と交差するときは徐行し、そちらの車を優先させます。"},
+{id:"i4",c:"int",f:3,t:["pri"],a:0,q:"交差点で右折しようとするとき、先に交差点に入っていれば、直進や左折する対向車より先に右折することができる。",e:"先に交差点に入っていても、右折車は直進・左折車の進行を妨げてはいけません。"},
+{id:"i5",c:"int",f:3,t:[],a:0,q:"交差点で右折するときは、交差点の中心の外側を大回りして通行しなければならない。",e:"右折はあらかじめできるだけ道路の中央に寄り、交差点の中心のすぐ内側を徐行します（環状交差点を除く）。"},
+{id:"i6",c:"int",f:2,t:["exc"],a:1,q:"一方通行の道路から右折するときは、あらかじめできるだけ道路の右端に寄らなければならない。",e:"一方通行の道路では「中央」ではなく「右端」に寄ります。"},
+{id:"i7",c:"int",f:3,t:[],a:1,q:"交差点で左折するときは、あらかじめできるだけ道路の左端に寄り、徐行しなければならない。",e:"左折の基本。巻き込みに注意。"},
+{id:"i8",c:"int",f:3,t:["num"],a:0,q:"右折や左折の合図は、交差点の手前の側端から10m手前の地点に達したときに行う。",e:"右左折の合図は30m手前です。"},
+{id:"i9",c:"int",f:3,t:["num"],a:0,q:"同じ方向に進行しながら進路を左方や右方に変えるときの合図は、進路を変えようとする約10秒前に行う。",e:"進路変更の合図は約3秒前です。"},
+{id:"i10",c:"int",f:3,t:["pri"],a:1,q:"交差点やその付近で緊急自動車が近づいてきたときは、交差点を避け、道路の左側に寄って一時停止しなければならない。",e:"交差点付近では「交差点を避けて左に寄って一時停止」。"},
+{id:"i11",c:"int",f:2,t:["word","pri"],a:0,q:"交差点やその付近でない場所で緊急自動車が近づいてきたときは、必ず道路の左側に寄って一時停止しなければならない。",e:"交差点付近以外では「道路の左側に寄って進路を譲る」。一時停止までは義務ではありません。"},
+{id:"i12",c:"int",f:2,t:["exc","pri"],a:1,q:"一方通行の道路で緊急自動車が近づいてきたとき、左側に寄るとかえって緊急自動車の妨げになる場合は、右側に寄って進路を譲る。",e:"一方通行路では、左に寄ると妨げになるときは右に寄ります。"},
+{id:"i13",c:"int",f:3,t:["exc"],a:1,q:"左右の見通しのきかない交差点では、信号機がある場合や優先道路を通行している場合を除き、徐行しなければならない。",e:"例外2つ（信号機あり・優先道路通行中）をセットで覚えましょう。"},
+{id:"i14",c:"int",f:2,t:["pri"],a:0,q:"信号機のある交差点で右折するとき、青信号であれば対向の直進車より先に右折することができる。",e:"青信号でも右折車は直進・左折車を優先させます。"},
+{id:"i15",c:"int",f:2,t:[],a:0,q:"環状交差点を通行するときは、左回り（反時計回り）に通行しなければならない。",e:"環状交差点は右回り（時計回り）に通行します。"},
+{id:"i16",c:"int",f:2,t:["pri"],a:1,q:"環状交差点に入ろうとするときは、徐行するとともに、環状交差点内を通行する車の進行を妨げてはならない。",e:"環状交差点の中を走る車が優先です。"},
+{id:"i17",c:"int",f:1,t:[],a:0,q:"環状交差点に入るときは、右折の合図をしなければならない。",e:"環状交差点に入るときは合図は不要です。出るときに左折の合図をします。"},
+{id:"i18",c:"int",f:1,t:["num"],a:1,q:"転回（Uターン）するときの合図は、転回しようとする地点から30m手前の地点に達したときに行う。",e:"転回の合図も右折と同じく30m手前。"},
+
+/* 速度・追い越し・進路変更 */
+{id:"v1",c:"spd",f:3,t:["num"],a:1,q:"徐行とは、車がすぐに停止できるような速度で進行することで、おおむね時速10km以下の速度をいう。",e:"徐行＝すぐ止まれる速度（目安は時速10km以下）。"},
+{id:"v2",c:"spd",f:2,t:["num"],a:0,q:"徐行とは、時速20km以下の速度で進行することをいう。",e:"徐行の目安は時速10km以下です。"},
+{id:"v3",c:"spd",f:3,t:[],a:1,q:"上り坂の頂上付近やこう配の急な下り坂では、徐行しなければならない。",e:"徐行場所：見通しのきかない交差点、道路の曲がり角付近、上り坂の頂上付近、こう配の急な下り坂、徐行の標識。"},
+{id:"v4",c:"spd",f:3,t:["exc"],a:0,q:"こう配の急な上り坂は、徐行しなければならない場所である。",e:"徐行が必要なのは「急な下り坂」。急な上り坂は徐行場所ではありません（駐停車禁止の場所ではあります）。"},
+{id:"v5",c:"spd",f:2,t:[],a:0,q:"道路の曲がり角付近は、見通しがよければ徐行しなくてもよい。",e:"道路の曲がり角付近は、見通しに関係なく徐行しなければならない場所です。見通しで変わるのは交差点のほうです。"},
+{id:"v6",c:"spd",f:3,t:["num"],a:1,q:"標識や標示で最高速度が指定されていない、中央線のある一般道路では、普通自動車の最高速度は時速60kmである。",e:"中央線や車両通行帯のある一般道路の法定速度は60km/hのままです。"},
+{id:"v7",c:"spd",f:3,t:["num","new"],a:1,q:"中央線、車両通行帯、中央分離帯のいずれもない一般道路（生活道路）では、標識などで最高速度が指定されていなければ、普通自動車の最高速度は時速30kmである。",e:"2026年9月1日施行の改正。中央線・車両通行帯のない一般道路の法定速度は60km/hから30km/hに引き下げられました。中央線・車両通行帯・中央分離帯などがある道路は60km/hのままです。"},
+{id:"v8",c:"spd",f:1,t:["num"],a:1,q:"原動機付自転車の法定速度は時速30kmである。",e:"原付（一種）は時速30km。"},
+{id:"v9",c:"spd",f:3,t:["num","exc"],a:1,q:"交差点とその手前から30m以内の場所では、優先道路を通行している場合を除き、他の車を追い越すために進路を変えたり、その横を通り過ぎたりしてはならない。",e:"交差点は手前30m以内が追い越し禁止（優先道路を通行中は除く）。"},
+{id:"v10",c:"spd",f:3,t:["num"],a:0,q:"踏切や横断歩道、自転車横断帯の手前で追い越しが禁止されているのは、その手前から50m以内の場所である。",e:"追い越し禁止はその手前から30m以内です。"},
+{id:"v11",c:"spd",f:3,t:["exc"],a:0,q:"トンネルの中は、車両通行帯があってもなくても追い越しが禁止されている。",e:"追い越し禁止なのは「車両通行帯のないトンネル」。車両通行帯があれば追い越せます。"},
+{id:"v12",c:"spd",f:3,t:["exc"],a:0,q:"こう配の急な上り坂は、追い越しが禁止されている場所である。",e:"追い越し禁止は「上り坂の頂上付近」と「こう配の急な下り坂」。急な上り坂は禁止されていません。"},
+{id:"v13",c:"spd",f:3,t:[],a:1,q:"前の車が自動車を追い越そうとしているときは、追い越しを始めてはならない。",e:"二重追い越しの禁止。"},
+{id:"v14",c:"spd",f:2,t:["exc"],a:0,q:"前の車が原動機付自転車を追い越そうとしているときに、その車を追い越すことは、二重追い越しとして禁止されている。",e:"二重追い越しになるのは、前の車が「自動車」を追い越そうとしているとき。原付を追い越そうとしている場合は該当しません。"},
+{id:"v15",c:"spd",f:3,t:["exc"],a:1,q:"前の車が右折するため道路の中央（一方通行の道路では右端）に寄って通行しているときは、その左側を通行して追い越さなければならない。",e:"追い越しは右側が原則。前の車が右折のため中央・右端に寄っているときだけは左側から。"},
+{id:"v16",c:"spd",f:2,t:[],a:0,q:"他の車に追い越されるときは、追い越しが早く終わるように速度を上げるとよい。",e:"追い越されるときは、追い越しが終わるまで速度を上げてはいけません。"},
+{id:"v17",c:"spd",f:2,t:["word"],a:0,q:"片側2車線の道路では、追い越しなどでなくても、右側の車両通行帯を通行し続けてよい。",e:"片側2車線なら左側の通行帯を通行し、右側は追い越しなどのためにあけておきます。"},
+{id:"v18",c:"spd",f:2,t:[],a:1,q:"片側3車線以上の道路では、速度の遅い車がいちばん左側の車両通行帯を通行し、速度が速くなるにつれて順次右側の通行帯を通行することができる。",e:"いちばん右側の通行帯は追い越しなどのためにあけておきます。"},
+{id:"v19",c:"spd",f:3,t:["exc"],a:1,q:"停留所で止まっている路線バスが発進の合図をしたときは、急ブレーキや急ハンドルで避けなければならない場合を除き、その発進を妨げてはならない。",e:"路線バスの発進が優先。ただし、急ブレーキ・急ハンドルが必要になるほど近いときは別です。"},
+{id:"v20",c:"spd",f:2,t:[],a:0,q:"停止距離とは、ブレーキが効き始めてから車が停止するまでの距離のことである。",e:"それは「制動距離」。停止距離は、空走距離（危険を感じてからブレーキが効き始めるまで）と制動距離を合わせた距離です。"},
+{id:"v21",c:"spd",f:2,t:["num"],a:0,q:"速度が2倍になると、制動距離もおよそ2倍になる。",e:"制動距離は速度の二乗に比例するので、速度2倍で約4倍になります。"},
+{id:"v22",c:"spd",f:2,t:["num"],a:0,q:"カーブを曲がるときの遠心力は速度に比例するので、速度が2倍になると遠心力も2倍になる。",e:"遠心力は速度の二乗に比例するので、速度2倍で約4倍になります。"},
+{id:"v23",c:"spd",f:2,t:[],a:1,q:"進路を変えると後方から来る車が急ブレーキや急ハンドルで避けなければならなくなるときは、進路を変えてはならない。",e:"後続車に急な回避をさせる進路変更は禁止です。"},
+{id:"v24",c:"spd",f:3,t:["new"],a:1,q:"自動車が同じ方向に進む自転車の右側を通過する場合に、自転車との間に十分な間隔がないときは、その間隔に応じた安全な速度で進行しなければならない。",e:"2026年4月1日施行の改正。警察庁の目安は間隔1m程度、間隔がとれないときは時速20〜30km程度です。"},
+{id:"v25",c:"spd",f:2,t:["exc"],a:0,q:"横断歩道とその手前から30m以内の場所では、前の車を追い越すことは禁止されているが、前の車の横を通り過ぎて前方に出る追い抜きは禁止されていない。",e:"横断歩道・自転車横断帯の手前30m以内は、追い越しだけでなく追い抜き（前の車の側方を通ってその前に出ること）も禁止です。"},
+
+/* 駐車・停車 */
+{id:"p1",c:"park",f:3,t:["num"],a:0,q:"交差点で駐停車が禁止されているのは、交差点とその端から10m以内の場所である。",e:"交差点は、その端から5m以内が駐停車禁止です。10mは踏切・安全地帯・バス停です。"},
+{id:"p2",c:"park",f:3,t:["num"],a:0,q:"横断歩道で駐停車が禁止されているのは、横断歩道とその端から前後3m以内の場所である。",e:"横断歩道・自転車横断帯は前後5m以内が駐停車禁止です。"},
+{id:"p3",c:"park",f:3,t:["num"],a:1,q:"踏切とその端から前後10m以内の場所は、駐停車が禁止されている。",e:"踏切・安全地帯・バス停は「10m」。"},
+{id:"p4",c:"park",f:3,t:["num"],a:0,q:"踏切とその端から前後5m以内の場所は、駐停車が禁止されている。",e:"踏切は前後10m以内です。"},
+{id:"p5",c:"park",f:2,t:["num"],a:0,q:"安全地帯の左側で駐停車が禁止されているのは、その前後5m以内の場所である。",e:"安全地帯の左側とその前後10m以内が駐停車禁止です。"},
+{id:"p6",c:"park",f:2,t:["num","exc"],a:1,q:"バスや路面電車の停留所の標示板（標示柱）から10m以内の場所は、運行時間中に限り駐停車が禁止されている。",e:"バス停は「運行時間中に限り」10m以内が駐停車禁止。"},
+{id:"p7",c:"park",f:2,t:["num"],a:1,q:"道路の曲がり角から5m以内の場所は、駐停車が禁止されている。",e:"曲がり角は5m。"},
+{id:"p8",c:"park",f:2,t:[],a:0,q:"こう配の急な坂では、上り坂は駐停車が禁止されているが、下り坂は禁止されていない。",e:"駐停車禁止は、こう配の急な坂の上りも下りも両方です。急な下り坂だけなのは「徐行」と「追い越し禁止」です。"},
+{id:"p9",c:"park",f:2,t:["exc"],a:0,q:"トンネルの中は、車両通行帯がある場合は駐停車することができる。",e:"トンネル内は車両通行帯の有無に関係なく駐停車禁止。車両通行帯で変わるのは「追い越し」のほうです。"},
+{id:"p10",c:"park",f:3,t:["num"],a:0,q:"火災報知機で駐車が禁止されているのは、火災報知機から5m以内の場所である。",e:"火災報知機は1m以内が駐車禁止です。"},
+{id:"p11",c:"park",f:3,t:["num"],a:0,q:"駐車場や車庫などの自動車用の出入口で駐車が禁止されているのは、出入口から1m以内の場所である。",e:"自動車用の出入口は3m以内が駐車禁止です。"},
+{id:"p12",c:"park",f:2,t:["num"],a:1,q:"道路工事の区域の端から5m以内の場所は、駐車が禁止されている。",e:"工事区域は5m。"},
+{id:"p13",c:"park",f:2,t:["num"],a:1,q:"消火栓や指定消防水利の標識が設けられている位置、消防用防火水そうの取入口から5m以内の場所は、駐車が禁止されている。",e:"消防関係は5m（火災報知機だけ1m）。"},
+{id:"p14",c:"park",f:2,t:["num"],a:0,q:"消防用機械器具の置場の出入口から3m以内の場所は、駐車が禁止されている。",e:"消防用機械器具の置場などは5m以内。3mは車庫などの自動車用出入口です。"},
+{id:"p15",c:"park",f:3,t:["num"],a:0,q:"駐車したときに車の右側の道路上に2m以上の余地があれば、その場所に駐車してもよい。",e:"原則として、車の右側に3.5m以上の余地が必要です。"},
+{id:"p16",c:"park",f:2,t:["exc","num"],a:1,q:"荷物の積みおろしを行う場合で運転者がすぐに運転できるときは、車の右側に3.5m以上の余地がとれない場所でも駐車することができる。",e:"3.5mルールの例外：荷物の積みおろしで運転者がすぐ運転できるとき、傷病者の救護でやむを得ないとき。"},
+{id:"p17",c:"park",f:3,t:["num"],a:0,q:"荷物の積みおろしのための停止は、時間に関係なく停車になる。",e:"荷物の積みおろしは、5分以内なら停車、5分を超えれば駐車です。"},
+{id:"p18",c:"park",f:2,t:[],a:1,q:"客待ちや荷待ちのための停止は、時間に関係なく駐車になる。",e:"客待ち・荷待ちは時間に関係なく駐車。"},
+{id:"p19",c:"park",f:2,t:[],a:1,q:"運転者が車から離れていてすぐに運転できない状態での停止は、短時間であっても駐車になる。",e:"運転者がすぐ運転できない状態は駐車です。"},
+{id:"p20",c:"park",f:2,t:[],a:0,q:"歩道や路側帯のない道路で駐停車するときは、道路の右端に沿って止めてもよい。",e:"駐停車は道路の左端に沿って行います。"},
+{id:"p21",c:"park",f:2,t:["num"],a:1,q:"幅が0.75m以下の路側帯のある道路で駐停車するときは、路側帯に入らず、車道の左端に沿って止めなければならない。",e:"0.75m以下は中に入れません。"},
+{id:"p22",c:"park",f:1,t:[],a:1,q:"坂道に駐車するときは、パーキングブレーキを確実にかけ、AT車ではチェンジレバーを「P」に入れておく。",e:"車が動き出さないようにする措置です。"},
+
+/* 歩行者・自転車 */
+{id:"w1",c:"ped",f:3,t:[],a:0,q:"横断歩道に近づいたとき、横断しようとする人が見えなければ、速度を落とさずに進行してよい。",e:"横断する人がいないことが明らかな場合のほかは、横断歩道の手前で停止できる速度で進まなければいけません。「見えない」は「いないことが明らか」とは違います。"},
+{id:"w2",c:"ped",f:3,t:["word"],a:0,q:"横断歩道を歩行者が横断しようとしているときは、徐行して通過すればよい。",e:"横断しようとしている人がいるときは、横断歩道の手前で一時停止して道を譲ります。"},
+{id:"w3",c:"ped",f:3,t:[],a:0,q:"横断歩道の手前で停止している車があるときは、徐行してその車の前方に出ればよい。",e:"その車の側方を通って前方に出る前に、一時停止しなければいけません。"},
+{id:"w4",c:"ped",f:3,t:[],a:0,q:"子どもが一人で歩いているときは、警音器を鳴らして注意を促しながら通過すればよい。",e:"一時停止か徐行をして、安全に通れるようにしなければいけません。"},
+{id:"w5",c:"ped",f:3,t:[],a:1,q:"白や黄色のつえを持った人や盲導犬を連れた人が歩いているときは、一時停止か徐行をして、安全に通れるようにしなければならない。",e:"目の不自由な人への保護義務。"},
+{id:"w6",c:"ped",f:2,t:[],a:1,q:"車いすで通行している人がいるときは、一時停止か徐行をして、安全に通れるようにしなければならない。",e:"身体の不自由な人への保護義務。"},
+{id:"w7",c:"ped",f:3,t:[],a:1,q:"歩行者のそばを通るときは、歩行者との間に安全な間隔をあけるか、徐行しなければならない。",e:"安全な間隔か徐行のどちらか。"},
+{id:"w8",c:"ped",f:3,t:[],a:0,q:"安全地帯のそばを通るときは、安全地帯に歩行者がいても、そのままの速度で通過することができる。",e:"安全地帯に歩行者がいるときは徐行しなければいけません。"},
+{id:"w9",c:"ped",f:3,t:[],a:0,q:"安全地帯のない停留所に止まっている路面電車に乗り降りする人がいるときは、徐行して路面電車の側方を通過することができる。",e:"乗り降りする人がいるときは、路面電車の後方で停止して待たなければいけません。"},
+{id:"w10",c:"ped",f:2,t:["num","exc"],a:0,q:"安全地帯のない停留所に止まっている路面電車に乗り降りする人がいなければ、路面電車との間隔に関係なく、徐行して通過することができる。",e:"徐行して通過できるのは、乗り降りする人がいなく、しかも路面電車との間に1.5m以上の間隔がとれるときです。"},
+{id:"w11",c:"ped",f:3,t:["word"],a:0,q:"道路外の施設に出入りするため歩道を横切るときは、歩行者がいなければ徐行して通過することができる。",e:"歩道や路側帯を横切るときは、歩行者の有無に関係なく、その直前で一時停止しなければなりません。"},
+{id:"w12",c:"ped",f:2,t:[],a:0,q:"止まっている通学・通園バスのそばを通るときは、警音器を鳴らせば徐行しなくてもよい。",e:"通学・通園バスのそばを通るときは、徐行して安全を確かめなければいけません。"},
+{id:"w13",c:"ped",f:2,t:[],a:1,q:"自転車横断帯を自転車が横断しようとしているときは、自転車横断帯の手前で一時停止して、自転車の通行を妨げないようにしなければならない。",e:"横断歩道の歩行者と同じ扱いです。"},
+{id:"w14",c:"ped",f:2,t:["exc"],a:1,q:"初心者マークや高齢者マークをつけた普通自動車に対して、危険を避けるためやむを得ない場合を除き、幅寄せや割り込みをしてはならない。",e:"初心者・高齢者・身体障害者・聴覚障害者・仮免許練習中の車への幅寄せ・割り込みは禁止。"},
+{id:"w15",c:"ped",f:2,t:[],a:0,q:"聴覚障害者マークをつけた車は保護の対象ではないので、幅寄せや割り込みをしてもよい。",e:"聴覚障害者マークの車も、危険を避けるためやむを得ない場合を除き、幅寄せや割り込みは禁止です。"},
+{id:"w16",c:"ped",f:2,t:[],a:1,q:"ぬかるみや水たまりのある場所を通るときは、泥や水をはねて歩行者に迷惑をかけないように、徐行するなどして注意しなければならない。",e:"泥はねの防止は運転者の義務です。"},
+{id:"w17",c:"ped",f:1,t:[],a:1,q:"自転車は軽車両なので、原則として車道の左側を通行しなければならない。",e:"自転車は車両。歩道は例外的に通行できる場合だけです。"},
+
+/* 高速道路 */
+{id:"h1",c:"hw",f:3,t:["num"],a:0,q:"高速自動車国道の本線車道では、標識などで指定がなければ、普通自動車の最高速度は時速80kmである。",e:"普通自動車は時速100kmです。"},
+{id:"h2",c:"hw",f:3,t:["num"],a:0,q:"高速自動車国道の本線車道では、標識などで指定がなければ、最低速度は時速40kmである。",e:"法定の最低速度は時速50kmです。"},
+{id:"h3",c:"hw",f:2,t:["exc"],a:1,q:"高速道路では原則として駐停車が禁止されているが、故障などでやむを得ない場合は、十分な幅のある路肩や路側帯に駐停車することができる。",e:"例外：故障など、料金所、危険防止のための一時停止など。"},
+{id:"h4",c:"hw",f:3,t:[],a:0,q:"故障で高速道路の路肩に車を止めたときは、非常点滅表示灯をつければ、停止表示器材を置く必要はない。",e:"高速道路で故障などにより止めるときは、停止表示器材を車の後方の路上に置かなければいけません。"},
+{id:"h5",c:"hw",f:2,t:[],a:0,q:"加速車線から本線車道に入るときは、合流しようとする車が、本線車道を通行している車より優先する。",e:"本線車道を通行している車が優先です。その進行を妨げてはいけません。"},
+{id:"h6",c:"hw",f:2,t:["word"],a:0,q:"高速道路が渋滞しているときは、路肩や路側帯を通行してもよい。",e:"渋滞を理由に路肩・路側帯を通行することはできません。"},
+{id:"h7",c:"hw",f:2,t:[],a:1,q:"高速道路では、故障車をロープなどでけん引して通行してはならない。",e:"高速道路では、けん引するための構造・装置のある車でなければ故障車をけん引できません。"},
+{id:"h8",c:"hw",f:2,t:[],a:0,q:"高速道路で出口を通り過ぎてしまったときは、路肩に寄せて後退し、出口に戻ってもよい。",e:"本線車道での後退・転回・横断は禁止です。次の出口まで進みます。"},
+{id:"h9",c:"hw",f:1,t:[],a:1,q:"高速道路を通行する前には、燃料・冷却水・エンジンオイルの量やタイヤの空気圧などを点検しておく。",e:"燃料切れやオーバーヒートは高速道路での停止の原因になります。"},
+{id:"h10",c:"hw",f:2,t:["num"],a:1,q:"乾燥した路面の高速道路を時速100kmで走るときの車間距離は、およそ100mが目安である。",e:"高速道路では「速度の数字＝m」が目安（80km/hなら約80m、100km/hなら約100m）。路面が濡れていればさらに長くとります。"},
+{id:"h11",c:"hw",f:1,t:[],a:1,q:"高速道路を通行するときは、後部座席の同乗者にもシートベルトを着用させなければならない。",e:"後部座席のシートベルトは一般道でも高速道路でも義務。"},
+
+/* 免許・運転者の心得 */
+{id:"r1",c:"rule",f:3,t:["num"],a:1,q:"普通免許を受けて1年を経過していない人は、普通自動車を運転するとき、初心者マークをつけなければならない。",e:"初心者マークは免許取得から1年未満。"},
+{id:"r2",c:"rule",f:2,t:["num"],a:0,q:"普通免許を受けて2年を経過していない人は、初心者マークをつけなければならない。",e:"1年未満です。"},
+{id:"r3",c:"rule",f:2,t:["num"],a:0,q:"2017年3月以降に取得した普通免許で、車両総重量5t、最大積載量3tのトラックを運転することができる。",e:"普通免許で運転できるのは、車両総重量3.5t未満、最大積載量2t未満、乗車定員10人以下の自動車です。"},
+{id:"r4",c:"rule",f:2,t:[],a:1,q:"普通免許を受けている人は、原動機付自転車と小型特殊自動車も運転することができる。",e:"普通免許で運転できるのは普通自動車・小型特殊・原付。"},
+{id:"r5",c:"rule",f:1,t:[],a:0,q:"普通免許を受けている人は、普通自動二輪車も運転することができる。",e:"自動二輪車は二輪の免許が必要です。"},
+{id:"r6",c:"rule",f:2,t:["num"],a:0,q:"仮免許で練習するときに助手席に乗せる指導者は、その車を運転できる免許を1年以上受けていればよい。",e:"指導者は、その車を運転できる免許を3年以上受けている人などです。"},
+{id:"r7",c:"rule",f:2,t:[],a:0,q:"運転免許証は、自宅に保管しておけば、運転中に携帯しなくてもよい。",e:"運転するときは免許証を携帯しなければいけません。"},
+{id:"r8",c:"rule",f:2,t:[],a:1,q:"自動車検査証（車検証）と自賠責保険の証明書は、車に備え付けておかなければならない。",e:"備え付けの義務があります。"},
+{id:"r9",c:"rule",f:3,t:[],a:1,q:"酒を飲んで運転するおそれのある人に、車を貸したり、酒をすすめたりしてはならない。",e:"車両提供・酒類提供・同乗も罰則の対象です。"},
+{id:"r10",c:"rule",f:3,t:["word"],a:0,q:"少量の酒であれば、運転に支障がない程度に酔いがさめたと感じたら運転してもよい。",e:"量に関係なく、酒を飲んだら運転してはいけません。"},
+{id:"r11",c:"rule",f:3,t:[],a:1,q:"自動車を運転中に、携帯電話を手に持って通話したり、画面を注視したりしてはならない。",e:"いわゆる「ながら運転」は禁止。停止中は対象外です。"},
+{id:"r12",c:"rule",f:3,t:[],a:0,q:"一般道路では、後部座席の同乗者にシートベルトを着用させなくてもよい。",e:"後部座席のシートベルトは、一般道路でも高速道路でも義務です。"},
+{id:"r13",c:"rule",f:3,t:["num"],a:0,q:"チャイルドシートの使用が義務づけられているのは、3歳未満の幼児を乗せるときである。",e:"6歳未満の幼児を乗せるときはチャイルドシートを使用させます。"},
+{id:"r14",c:"rule",f:1,t:["exc"],a:1,q:"疾病のためシートベルトを着用させることが適当でない人を乗せるときなどは、シートベルトを着用させなくてもよい。",e:"病気・けが・妊娠などで適当でない場合などは例外。"},
+{id:"r15",c:"rule",f:2,t:[],a:1,q:"げたやスリッパなど、運転操作に支障を及ぼすおそれのある履物をはいて運転してはならない。",e:"神奈川県の公安委員会規則でも禁止されています。"},
+{id:"r16",c:"rule",f:2,t:[],a:0,q:"短時間であれば、エンジンをかけたまま車から離れてもよい。",e:"車から離れるときは、時間に関係なくエンジンを止め、ブレーキを確実にかけます。"},
+{id:"r17",c:"rule",f:1,t:[],a:1,q:"眠気を催す成分を含むかぜ薬などを飲んだときは、運転を控えるようにする。",e:"薬の影響で正常な運転ができないおそれがあります。"},
+{id:"r18",c:"rule",f:1,t:[],a:1,q:"運転免許の有効期間が過ぎた免許証で運転すると、無免許運転になる。",e:"更新を忘れたら運転できません。"},
+{id:"r19",c:"rule",f:2,t:[],a:1,q:"自賠責保険（または自賠責共済）に加入していない自動車は、運転してはならない。",e:"自賠責は強制保険です。"},
+{id:"r20",c:"rule",f:1,t:[],a:0,q:"任意保険への加入は、法律で義務づけられている。",e:"任意保険は加入が望ましいものの、法律上の義務ではありません。"},
+{id:"r21",c:"rule",f:1,t:[],a:1,q:"不必要なアイドリングや空ぶかし、急発進・急加速は、騒音や排出ガスを増やすので避ける。",e:"環境に配慮した運転（エコドライブ）。"},
+
+/* 夜間・悪天候・踏切・坂道 */
+{id:"e1",c:"env",f:3,t:[],a:0,q:"夜間、対向車と行き違うときは、前照灯を上向きにして自分の車の存在を知らせる。",e:"対向車と行き違うときは、前照灯を減光するか下向きに切り替えます。"},
+{id:"e2",c:"env",f:2,t:[],a:0,q:"夜間、他の車の直後を通行するときは、前照灯を上向きにして前方をよく照らす。",e:"前の車の運転者がまぶしくなるので、下向きにします。"},
+{id:"e3",c:"env",f:3,t:["num"],a:1,q:"昼間でも、トンネルの中や濃い霧の中などで50m先が見えないような場所を通行するときは、前照灯などをつけなければならない。",e:"「50m先が見えない」が基準。"},
+{id:"e4",c:"env",f:2,t:["num"],a:0,q:"昼間、前照灯をつけなければならないのは、100m先が見えないような場所を通行するときである。",e:"基準は50mです。"},
+{id:"e5",c:"env",f:2,t:[],a:1,q:"夜間、見通しの悪い交差点やカーブの手前では、前照灯を上向きにするか点滅させて、他の車や歩行者に接近を知らせるとよい。",e:"夜間は警音器の代わりにライトで知らせます。"},
+{id:"e6",c:"env",f:2,t:[],a:0,q:"夜間、自分の車のライトと対向車のライトで、道路の中央付近の歩行者が見えなくなる現象を、ハイドロプレーニング現象という。",e:"それは「蒸発現象」。ハイドロプレーニング現象は、雨の日にタイヤが水の膜の上を滑る現象です。"},
+{id:"e7",c:"env",f:2,t:[],a:1,q:"雨の日に高速で走行すると、タイヤが水の膜の上を滑ってハンドルやブレーキが効かなくなるハイドロプレーニング現象が起こることがある。",e:"速度を落とし、溝の十分なタイヤを使うことが対策です。"},
+{id:"e8",c:"env",f:3,t:[],a:1,q:"長い下り坂でフットブレーキを使いすぎると、フェード現象やベーパーロック現象が起こり、ブレーキが効かなくなることがある。",e:"下り坂はエンジンブレーキを主に使い、フットブレーキは補助的に。"},
+{id:"e9",c:"env",f:2,t:[],a:0,q:"下り坂では、フットブレーキを主に使い、エンジンブレーキは使わないようにする。",e:"下り坂ではエンジンブレーキを主に使い、フットブレーキは補助的に使います。"},
+{id:"e10",c:"env",f:3,t:[],a:1,q:"踏切を通過しようとするときは、その直前で一時停止し、自分の目と耳で左右の安全を確かめなければならない。",e:"窓を開けて音も確認します。"},
+{id:"e11",c:"env",f:3,t:["exc"],a:1,q:"信号機のある踏切で信号が青色のときは、一時停止せずに、安全を確かめて通過することができる。",e:"信号機のある踏切の青信号は一時停止の例外。"},
+{id:"e12",c:"env",f:2,t:[],a:0,q:"踏切を通過するときは、落輪しないように、なるべく左側に寄って通行する。",e:"左側に寄ると落輪のおそれがあるので、対向車に注意しながらやや中央寄りを通ります。"},
+{id:"e13",c:"env",f:2,t:[],a:1,q:"マニュアル車で踏切を通過するときは、エンストを防ぐため、発進したときの低速ギアのまま一気に通過する。",e:"踏切内での変速はエンストの原因になります。"},
+{id:"e14",c:"env",f:3,t:[],a:1,q:"踏切内で車が動かなくなったときは、踏切支障報知装置（非常ボタン）を押したり、発炎筒を使ったりして、列車の運転士に知らせる。",e:"まず乗っている人を避難させ、列車に知らせます。"},
+{id:"e15",c:"env",f:2,t:["word"],a:0,q:"踏切の遮断機が下り始めていても、列車がまだ見えなければ踏切に入ってよい。",e:"遮断機が下り始めているときや警報機が鳴っているときは、踏切に入ってはいけません。"},
+{id:"e16",c:"env",f:3,t:[],a:0,q:"大地震が発生して車を道路上に置いて避難するときは、エンジンキーを抜き、ドアをロックしておく。",e:"エンジンを止め、キーはつけたままにするか運転席など車内の分かりやすい場所に置き、窓を閉めてドアはロックしません。緊急車両の妨げになったとき移動できるようにするためです。"},
+{id:"e17",c:"env",f:2,t:["word"],a:0,q:"大地震が発生して避難するときは、車を使って速やかに避難するのがよい。",e:"原則として車を使って避難してはいけません。"},
+{id:"e18",c:"env",f:2,t:[],a:1,q:"カーブを曲がるときは、カーブの途中でブレーキをかけないように、手前の直線部分で十分に速度を落とす。",e:"カーブ中の急ブレーキはスリップの原因。"},
+{id:"e19",c:"env",f:2,t:[],a:0,q:"「警笛鳴らせ」の標識がある場所でも、危険がなければ警音器を鳴らさなくてもよい。",e:"「警笛鳴らせ」の標識がある場所では、警音器を鳴らさなければいけません。"},
+{id:"e20",c:"env",f:2,t:["word"],a:0,q:"見通しの悪い曲がり角を通るときは、標識がなくても、必ず警音器を鳴らさなければならない。",e:"警音器はみだりに鳴らせません。鳴らすのは標識がある場所と、危険を避けるためやむを得ないときだけ。"},
+{id:"e21",c:"env",f:3,t:["pri"],a:0,q:"坂道で対向車と行き違うときは、上り坂の車が下り坂の車に道を譲る。",e:"下りの車が上りの車に道を譲るのが原則（近くに待避所があれば上りの車でも待避所に入って譲る）。"},
+{id:"e22",c:"env",f:2,t:["pri"],a:1,q:"片側ががけになっている狭い道路で対向車と行き違うときは、がけ側の車が安全な場所に一時停止して道を譲る。",e:"転落の危険があるがけ側の車が止まって譲ります。"},
+{id:"e23",c:"env",f:2,t:["pri"],a:1,q:"道路上に障害物があるときは、障害物のある側の車が一時停止か減速をして、反対方向からの車に道を譲る。",e:"障害物のある側が譲るのが原則。"},
+
+/* 車の知識・積載・事故 */
+{id:"c1",c:"car",f:3,t:[],a:1,q:"交通事故を起こしたときは、続発事故の防止と負傷者の救護を行い、警察官に事故の発生を報告しなければならない。",e:"①運転停止・続発防止 ②負傷者の救護 ③警察へ報告。"},
+{id:"c2",c:"car",f:2,t:[],a:0,q:"交通事故で頭部を強く打った負傷者は、後続事故のおそれがなくても、すぐに抱き起こして安全な場所に移す。",e:"頭部を打っている負傷者は、後続事故のおそれがない限り、むやみに動かしてはいけません。"},
+{id:"c3",c:"car",f:3,t:["word"],a:0,q:"交通事故の当事者どうしで話し合いがついた場合は、警察官に事故を報告しなくてもよい。",e:"示談が成立していても、警察への報告は義務です。"},
+{id:"c4",c:"car",f:2,t:["num","new"],a:0,q:"普通自動車に積むことができる荷物の長さは、自動車の長さの1.1倍までである。",e:"2022年5月の改正で、長さ・幅とも自動車の1.2倍までになりました。古い参考書の1.1倍に注意。"},
+{id:"c5",c:"car",f:2,t:["num"],a:1,q:"普通自動車に荷物を積むときの高さの制限は、地上から3.8mまでである。",e:"普通自動車は地上3.8m（軽自動車・三輪は2.5m）。"},
+{id:"c6",c:"car",f:2,t:["num"],a:0,q:"故障車をロープでけん引するときは、けん引する車と故障車との間を10m以内にすればよい。",e:"けん引する車と故障車との間は5m以内です。ロープには0.3メートル平方以上の白い布をつけます。"},
+{id:"c7",c:"car",f:1,t:["num"],a:1,q:"故障車ではない車両総重量750kgを超える車をけん引するときは、けん引免許が必要である。",e:"故障車をロープなどでけん引する場合は、けん引免許は不要です。"},
+{id:"c8",c:"car",f:1,t:[],a:1,q:"自家用の普通乗用自動車の日常点検は、走行距離や運行時の状態などから判断した適切な時期に行えばよい。",e:"自家用乗用車は「適切な時期」に日常点検。"},
+{id:"c9",c:"car",f:2,t:[],a:0,q:"AT車のエンジンを始動するときは、チェンジレバーが「D」に入っていることを確かめてから行う。",e:"ブレーキペダルを踏み、チェンジレバーが「P」にあることを確かめてから始動します。"},
+{id:"c10",c:"car",f:2,t:[],a:1,q:"AT車で、チェンジレバーが「D」などに入っているとき、アクセルを踏まなくても車がゆっくり動き出すことをクリープ現象という。",e:"停止中はブレーキをしっかり踏んでおきます。"},
+{id:"c11",c:"car",f:1,t:[],a:0,q:"ヘッドレストは、首を保護するため首の高さに合わせて調節する。",e:"ヘッドレストは頭部（後頭部の中心付近）に合わせます。"},
+{id:"c12",c:"car",f:2,t:[],a:0,q:"車が曲がるとき、前輪が後輪より内側を通ることによる前後輪の通る位置の差を、内輪差という。",e:"内輪差は、後輪が前輪より内側を通ることによる差です。"},
+{id:"c13",c:"car",f:1,t:[],a:0,q:"荷物を積んで車が重くなると、制動距離は短くなる。",e:"重くなると制動距離は長くなります。"},
+{id:"c14",c:"car",f:1,t:[],a:1,q:"ハイブリッド車や電気自動車は走行音が小さいため、歩行者などが接近に気づかないことがある。",e:"歩行者のそばでは特に注意。"},
+
+/* 追加分（2026-10-03） */
+{id:"na1",c:"sig",f:3,t:["read", "exc"],a:1,q:"左折可の標示板（左向きの矢印の標示板）があるときは、前方の信号が赤色や黄色であっても、周りの交通に注意して左折することができる。",e:"左折可の標示板があれば、信号にかかわらず歩行者など周りの交通に注意して左折できる。"},
+{id:"na2",c:"sig",f:2,t:["read", "word"],a:0,q:"左折可の標示板があるときでも、前方の信号が赤色であれば、停止位置で一時停止してから左折しなければならない。",e:"左折可の標示板があるときは、一時停止の義務はなく、周りの交通に注意して左折できる。"},
+{id:"na3",c:"sig",f:3,t:["read"],a:0,q:"黄色の矢印の信号のときは、自動車も矢印の方向に進むことができる。",e:"黄色の矢印信号は路面電車に対するもので、自動車などは進むことができない。"},
+{id:"na4",c:"sig",f:2,t:["exc"],a:1,q:"赤色の灯火の信号に変わったとき、交差点ですでに左折している車は、そのまま進むことができる。",e:"赤色の灯火でも、交差点ですでに左折している車はそのまま進める（すでに右折している車も同様で、青信号の車の進行を妨げてはならない）。"},
+{id:"na5",c:"sig",f:2,t:["read"],a:1,q:"警察官が灯火を横に振っているとき、灯火が振られている方向に進行する交通については、青色の灯火信号と同じ意味である。",e:"灯火が振られている方向（身体の正面に平行する方向）の交通は青色、身体の正面に対面する交通は赤色の灯火信号と同じ意味。"},
+{id:"na6",c:"sig",f:3,t:["read"],a:0,q:"警察官が腕を垂直に上げているとき、警察官の身体の正面に対面する交通については、青色の灯火信号と同じ意味である。",e:"腕を垂直に上げているとき、身体の正面に対面する交通は赤色、平行する交通は黄色の灯火信号と同じ意味。"},
+{id:"na7",c:"sig",f:3,t:["num"],a:1,q:"交差点以外で横断歩道も自転車横断帯も踏切もない場所で、警察官が手信号で停止を指示しているときは、警察官の1m手前で停止しなければならない。",e:"停止線などがない交差点以外の場所では、警察官や交通巡視員の1m手前が停止位置になる。"},
+{id:"na8",c:"sig",f:2,t:["word"],a:0,q:"交通巡視員の手信号は警察官の手信号とは異なり、従わなくてもよい。",e:"交通巡視員の手信号や灯火による信号にも、警察官の手信号と同じように従わなければならない。"},
+{id:"na9",c:"sig",f:1,t:["read"],a:1,q:"自動車は、歩行者用信号機の信号ではなく、車両用の信号機の信号に従って通行しなければならない。",e:"歩行者用信号機は歩行者（標示があれば自転車も）に対するもので、自動車は車両用の信号機に従う。"},
+{id:"na10",c:"sig",f:2,t:["word"],a:0,q:"青色の灯火の信号のとき、自動車は直進や左折はできるが、右折はできない。",e:"青色の灯火では、自動車は直進・左折・右折ができる（右折時は対向の直進車や左折車の進行を妨げない）。"},
+{id:"na11",c:"sign",f:2,t:["read", "num", "exc"],s:"max50",a:1,q:"この標識のある道路でも、原動機付自転車は時速30kmを超えて運転してはならない。",e:"最高速度の標識が時速30kmを超える速度を示していても、原動機付自転車の最高速度は時速30km。"},
+{id:"na12",c:"sign",f:2,t:["read"],s:"danger",a:1,q:"この標識は「その他の危険」を表す警戒標識で、前方の道路に何らかの危険があるので注意して運転するよう促している。",e:"黄色のひし形に「！」の警戒標識は「その他の危険」で、前方に危険があることを示す。"},
+{id:"na13",c:"sign",f:1,t:["read"],s:"stopok",a:1,q:"この標識は「停車可」を表し、この場所では停車することができることを示している。",e:"青地に「停」の文字の標識は「停車可」で、その場所で停車できることを表す。"},
+{id:"na14",c:"sign",f:2,t:["read", "num"],s:"slow",a:0,q:"この標識のある場所では、時速20km以下の速度で進行すればよい。",e:"この標識は「徐行」で、すぐに停止できるような速度（おおむね時速10km以下）で進行しなければならない。"},
+{id:"na15",c:"sign",f:2,t:["read"],a:1,q:"規制標識の下に「ここから」の補助標識があるときは、そこからその規制が始まることを表している。",e:"「ここから」は規制区間の始まり、「ここまで」は規制区間の終わりを表す。"},
+{id:"na16",c:"sign",f:2,t:["read"],a:0,q:"規制標識の下に「ここまで」の補助標識があるときは、そこからその規制が始まることを表している。",e:"「ここまで」は規制区間の終わりを表す。始まりを表すのは「ここから」。"},
+{id:"na17",c:"sign",f:2,t:["read", "word"],a:0,q:"規制標識の下に「日曜・休日を除く」の補助標識があるときは、その規制は日曜日と休日だけ適用される。",e:"「日曜・休日を除く」は、日曜日と休日には規制が適用されず、それ以外の日に適用されることを表す。"},
+{id:"na18",c:"sign",f:3,t:["read"],a:1,q:"車両通行帯の境界線が黄色の実線と白の破線の組み合わせになっているときは、白の破線側を通行している車は、その線を越えて進路を変更することができる。",e:"進路変更禁止の標示で、白の破線側からは進路変更でき、黄色の線側からは進路変更できない。"},
+{id:"na19",c:"sign",f:2,t:["exc"],a:1,q:"進路変更禁止の黄色の線で区画された車両通行帯を通行していても、道路工事などでその車両通行帯を通行できないときは、黄色の線を越えて進路を変更することができる。",e:"道路の損壊や工事などでその通行帯を通行できないときや、緊急自動車に進路を譲るときは、黄色の線を越えて進路変更できる。"},
+{id:"na20",c:"sign",f:2,t:["read", "word"],a:0,q:"白の斜線で示された導流帯（ゼブラゾーン）は、車が通行してはならない部分である。",e:"導流帯は車の通行を安全・円滑に誘導するための標示で、通行は禁止されていないが、なるべく通らないようにする。"},
+{id:"na21",c:"sign",f:2,t:["read"],a:1,q:"黄色の枠の中に黄色の斜線が引かれた「立入り禁止部分」の標示がある場所には、車は入ってはならない。",e:"立入り禁止部分の標示がある場所には、車は入ることができない（白の斜線の導流帯とは異なる）。"},
+{id:"na22",c:"sign",f:2,t:["read"],a:0,q:"進行方向別通行区分の標示がある交差点で、直進の矢印が示された通行帯を通行しているときでも、その交差点で左折することができる。",e:"進行方向別通行区分があるときは、その通行帯で指定された方向にしか進めない。左折するときは、あらかじめ左折の通行帯に入る。"},
+{id:"na23",c:"sign",f:3,t:["exc"],a:1,q:"路線バス等優先通行帯は普通自動車も通行できるが、交通が混雑していて、路線バス等が近づいてきたときにそこから出られなくなるおそれがあるときは、はじめからその通行帯を通行してはならない。",e:"優先通行帯は普通自動車も通行できるが、路線バス等が近づいたら速やかに出なければならず、出られなくなるおそれがあるときは初めから通行しない。"},
+{id:"na24",c:"sign",f:2,t:["word"],a:0,q:"路線バス等優先通行帯を普通自動車で通行中、後方から路線バスが近づいてきても、先にその通行帯にいたのであれば、そのまま通行を続けてよい。",e:"路線バス等が近づいてきたときは、速やかにその通行帯から出なければならない。"},
+{id:"na25",c:"sign",f:2,t:["exc"],a:1,q:"路線バス等専用通行帯は、普通自動車は原則として通行できないが、原動機付自転車や小型特殊自動車、軽車両は通行することができる。",e:"専用通行帯は指定車以外の自動車は通行できないが、小型特殊自動車・原動機付自転車・軽車両は通行できる。"},
+{id:"na26",c:"sign",f:2,t:["exc"],a:0,q:"路線バス等専用通行帯は、左折するためであっても、普通自動車は通行してはならない。",e:"左折する場合や、道路工事などでやむを得ない場合は、普通自動車も専用通行帯を通行できる。"},
+{id:"na27",c:"int",f:2,t:["exc"],a:0,q:"自動車は、右折や左折をするためであっても、軌道敷内を通行してはならない。",e:"右左折・横断・転回するため軌道敷を横切る場合や、危険防止・道路工事などでやむを得ない場合、標識で認められている場合は軌道敷内を通行できる。"},
+{id:"na28",c:"int",f:1,t:["exc", "pri"],a:1,q:"標識により軌道敷内を通行することができる自動車でも、後方から路面電車が近づいてきたときは、速やかに軌道敷の外に出るか、路面電車との間に必要な距離を保たなければならない。",e:"軌道敷内を通行できる場合でも、路面電車の通行を妨げてはならない。"},
+{id:"na29",c:"int",f:3,t:["pri"],a:1,q:"信号機のない交差点で、自分が通行している道路より交差する道路の幅が明らかに広いときは、徐行して、広い道路を通行する車の進行を妨げてはならない。",e:"交差する道路の幅が明らかに広いときは、徐行して広い道路の車の進行を妨げない。"},
+{id:"na30",c:"int",f:2,t:["pri", "word"],a:0,q:"信号機のない交差点で、交差する道路の幅が明らかに広いときは、必ず一時停止しなければならない。",e:"法令上の義務は徐行して広い道路の車の進行を妨げないこと。一時停止は標識などがある場合。"},
+{id:"na31",c:"int",f:3,t:["pri"],a:1,q:"一時停止の標識のある交差点では、停止位置で一時停止した後も、交差する道路を通行する車の進行を妨げてはならない。",e:"一時停止の後も、交差道路を通行する車や路面電車の進行を妨げてはならない。"},
+{id:"na32",c:"int",f:2,t:["pri", "word"],a:0,q:"一時停止の標識のある交差点では、停止位置で一時停止しさえすれば、交差する道路の車より先に進むことができる。",e:"一時停止した後も、交差道路を通行する車の進行を妨げてはならない。"},
+{id:"na33",c:"int",f:2,t:["new"],a:1,q:"環状交差点から出るときは、出ようとする地点の直前の出口の側方を通過したとき（入った直後の出口から出るときは環状交差点に入ったとき）に左折の合図を行う。",e:"環状交差点では入るときの合図は不要で、出るときに左折の合図を、出ようとする地点の直前の出口の側方を通過したときに行い、出るまで続ける。"},
+{id:"na34",c:"int",f:2,t:["word"],a:1,q:"右折や左折、進路変更などの合図は、その行為が終わるまで続けなければならない。",e:"合図は、右左折や進路変更などの行為が終わるまで継続し、終わったら速やかにやめる。"},
+{id:"na35",c:"int",f:2,t:["word"],a:0,q:"進路変更の合図は、進路を変え始めたら、変え終わる前にやめてよい。",e:"合図は進路変更が終わるまで続けなければならない。"},
+{id:"na36",c:"int",f:2,t:["exc", "num"],a:0,q:"信号機があり車両通行帯が3つ以上ある道路の交差点でも、二段階右折の標識がなければ、原動機付自転車は小回りの方法で右折しなければならない。",e:"信号機などで交通整理が行われ、車両通行帯が3つ以上ある道路の交差点では、標識がなくても原動機付自転車は二段階右折する（小回り右折の標識がある場合を除く）。"},
+{id:"na37",c:"int",f:2,t:["word"],a:0,q:"交差点で左折するときは、内輪差で後輪が縁石に乗り上げないよう、あらかじめ道路の中央寄りに出てから大回りして左折する。",e:"左折するときは、あらかじめできるだけ道路の左端に寄り、交差点の側端に沿って徐行しながら通行する。"},
+{id:"na38",c:"spd",f:2,t:["word"],a:1,q:"一般道路では、標識などで指定されていなければ、法令で定められた最低速度はない。",e:"法定の最低速度（時速50km）があるのは高速自動車国道の本線車道で、一般道路には最低速度の定めはない（標識で指定されている場合を除く）。"},
+{id:"na39",c:"spd",f:3,t:["word"],a:0,q:"法定速度や指定速度の範囲内であれば、道路や交通の状況に関係なく、その速度で走行してよい。",e:"最高速度の範囲内でも、道路や交通の状況、天候や視界などを考えて安全な速度で走行しなければならない。"},
+{id:"na40",c:"spd",f:2,t:[],a:1,q:"同じ方向に進む前の車との間には、前の車が急に停止しても追突しないような安全な車間距離をとらなければならない。",e:"前の車が急停止しても追突を避けられる必要な距離を保たなければならない。"},
+{id:"na41",c:"spd",f:2,t:["word"],a:0,q:"速度が速くなるほど運転者の視野は広くなり、近くのものがよく見えるようになる。",e:"速度が速くなるほど視野は狭くなり、近くのものが見えにくくなる。"},
+{id:"na42",c:"spd",f:2,t:[],a:1,q:"運転者が疲れているときは、危険を認めてから判断して行動するまでに時間がかかるため、空走距離が長くなる。",e:"疲れていると判断や操作が遅れ、ブレーキが効き始めるまでの空走距離が長くなる。"},
+{id:"na43",c:"spd",f:2,t:["num", "word"],a:0,q:"車間距離は、速度に関係なく5m程度とっておけばよい。",e:"車間距離は、前の車が急に停止しても追突しないだけの距離が必要で、速度が速いほど長くとる。"},
+{id:"na44",c:"spd",f:2,t:[],a:1,q:"他の車を追い越すときは、原則としてその車の右側を通行しなければならない。",e:"追い越しは前の車の右側を通行するのが原則（前の車が右折のため中央に寄っているときは左側）。"},
+{id:"na45",c:"spd",f:3,t:[],a:1,q:"こう配の急な下り坂は、追い越しが禁止されている場所である。",e:"道路の曲がり角付近、上り坂の頂上付近、こう配の急な下り坂は追い越し禁止場所。"},
+{id:"na46",c:"spd",f:2,t:["word", "exc"],a:0,q:"道路の曲がり角付近でも、見通しがよければ他の車を追い越してもよい。",e:"道路の曲がり角付近は、見通しにかかわらず追い越しが禁止されている。"},
+{id:"na47",c:"spd",f:3,t:[],a:1,q:"前の車が交差点や踏切などで停止や徐行をしているときは、その前に割り込んだり、その前を横切ったりしてはならない。",e:"停止・徐行している車の前への割り込みや横切りは禁止されている。"},
+{id:"na48",c:"spd",f:2,t:["word"],a:0,q:"信号待ちで前の車が止まっているときでも、車と車の間に十分なすき間があれば、その間に割り込んでよい。",e:"信号などに従って停止や徐行をしている車やそれに続く車の前に、割り込んだり横切ったりしてはならない。"},
+{id:"na49",c:"spd",f:2,t:["exc"],a:1,q:"車両通行帯のない道路では、追い越しなどやむを得ない場合を除き、自動車は道路の左に寄って通行しなければならない。",e:"車両通行帯のない道路では、追い越しなどの場合を除き、道路の左に寄って通行する。"},
+{id:"na50",c:"spd",f:2,t:["new", "word"],a:0,q:"自動車が同じ方向に進む自転車の右側を通過するとき、自転車との間に十分な間隔がとれなくても、警音器を鳴らして知らせれば速度を落とす必要はない。",e:"2026年4月施行の改正で、十分な間隔がないときは、その間隔に応じた安全な速度で進行しなければならない。警音器でみだりに知らせることもできない。"},
+{id:"nb1",c:"park",f:2,t:["exc"],a:1,q:"夜間、道路に駐停車するときは、道路照明などにより50m後方から見える場合などを除き、非常点滅表示灯、駐車灯または尾灯をつけなければならない。",e:"夜間の駐停車では灯火が必要です。例外は、道路照明などで50m後方から見える場所や、停止表示器材を置いた場合などです。"},
+{id:"nb2",c:"park",f:2,t:["num"],a:0,q:"夜間、道路照明のある場所に駐停車するとき、灯火をつけなくてよいのは、200m後方から見える場合である。",e:"誤り。灯火をつけなくてよいのは、道路照明などにより50m後方から見える場所です。"},
+{id:"nb3",c:"park",f:2,t:[],a:1,q:"道路に平行して駐停車している車と並んで駐停車（二重駐車）してはならない。",e:"道路の左端に沿って止めている車の横に並べて止める並列駐停車は禁止されています。"},
+{id:"nb4",c:"park",f:2,t:[],a:1,q:"軌道敷内は、駐停車が禁止されている場所である。",e:"路面電車の軌道敷内は駐停車禁止場所です。"},
+{id:"nb5",c:"park",f:2,t:["word"],a:0,q:"坂の頂上付近は、駐車は禁止されているが、停車はすることができる。",e:"誤り。坂の頂上付近とこう配の急な坂は、駐車も停車も禁止されている駐停車禁止場所です。"},
+{id:"nb6",c:"park",f:3,t:["num"],a:0,q:"自転車横断帯とその端から前後10m以内の場所は、駐停車が禁止されている。",e:"誤り。自転車横断帯や横断歩道で駐停車が禁止されているのは、その端から前後5m以内の場所です。"},
+{id:"nb7",c:"park",f:2,t:["exc"],a:1,q:"標識によって駐車するときの余地が指定されている場所では、車の右側にその指定された余地がとれなければ駐車してはならない。",e:"原則は3.5m以上の余地ですが、標識で余地が指定されているときは、その指定された余地をとらなければなりません。"},
+{id:"nb8",c:"park",f:3,t:["word"],a:0,q:"人の乗り降りのための停止でも、5分を超えると駐車になる。",e:"誤り。人の乗り降りのための停止は、時間に関係なく停車です。5分が境になるのは荷物の積みおろしの場合です。"},
+{id:"nb9",c:"park",f:2,t:["word"],a:0,q:"故障のため車が継続して停止している状態は、停車にあたる。",e:"誤り。故障などで車が継続して停止している状態は駐車にあたります。"},
+{id:"nb10",c:"park",f:3,t:["num", "word"],a:1,q:"5分を超える荷物の積みおろしのための停止は、駐車になる。",e:"荷物の積みおろしは5分以内なら停車、5分を超えると駐車になります。"},
+{id:"nb11",c:"park",f:2,t:["num"],a:1,q:"道路上の同じ場所に、昼間は12時間以上、夜間は8時間以上引き続いて駐車してはならない。",e:"自動車の保管場所の確保等に関する法律（車庫法）で、道路を車庫代わりにすることは禁止されています（特定の村の区域内の道路を除く）。"},
+{id:"nb12",c:"park",f:2,t:["num"],a:0,q:"道路上の同じ場所に夜間引き続いて駐車することが禁止されるのは、12時間以上駐車した場合である。",e:"誤り。夜間は8時間以上、昼間は12時間以上引き続いて同じ場所に駐車してはなりません。"},
+{id:"nb13",c:"park",f:1,t:[],a:1,q:"自動車の保有者は、道路以外の場所に、その自動車の保管場所を確保しなければならない。",e:"車庫法により、道路以外の場所に保管場所を確保する義務があり、道路を保管場所として使ってはなりません。"},
+{id:"nb14",c:"park",f:2,t:["word"],a:0,q:"時間制限駐車区間では、パーキング・メーターを作動させれば、標識で示された時間を超えて駐車してもよい。",e:"誤り。時間制限駐車区間では、標識で示された時間を超えて駐車してはなりません。"},
+{id:"nb16",c:"park",f:2,t:[],a:0,q:"歩道のある道路では、他の交通の妨げにならないよう、歩道に乗り上げて駐車してもよい。",e:"誤り。車は歩道を通行・駐車できません。歩道のある道路では車道の左端に沿って駐停車します。"},
+{id:"nb17",c:"park",f:2,t:["word"],a:0,q:"駐車禁止の場所でも、運転者が車のそばにいて、すぐに運転できる状態であれば、駐車してもよい。",e:"誤り。運転者がすぐ運転できる状態でも、客待ちなどで継続して止めるのは駐車であり、駐車禁止場所ではできません。"},
+{id:"nb18",c:"park",f:1,t:[],a:1,q:"マニュアル車を坂道に駐車するときは、上り坂ではギアをローに、下り坂ではバックに入れておくとよい。",e:"教則では、車から離れるときはハンドブレーキを掛け、ギアは平地や下り坂ではバック、上り坂ではローに入れておくこととされています。坂道では輪止めもします。"},
+{id:"nb19",c:"ped",f:2,t:["exc"],a:1,q:"歩行者用道路は、沿道に車庫を持つなどで特に通行を認められた車だけが通行でき、その場合は歩行者に注意して徐行しなければならない。",e:"歩行者用道路は原則として車の通行禁止です。許可を受けた車も徐行が必要です。"},
+{id:"nb20",c:"ped",f:2,t:["word"],a:0,q:"歩行者用道路は、歩行者が少ないときは一般の車も通行することができる。",e:"誤り。歩行者用道路を通行できるのは、沿道に車庫があるなどで特に通行を認められた車だけです。"},
+{id:"nb21",c:"ped",f:2,t:["exc"],a:1,q:"自転車などの軽車両は、著しく歩行者の通行を妨げる場合を除き、道路の左側の路側帯を通行することができる（歩行者用路側帯を除く）。",e:"軽車両は左側の路側帯を通行できますが、歩行者の通行を妨げない速度と方法で進みます。白の実線2本の歩行者用路側帯は通行できません。"},
+{id:"nb22",c:"ped",f:2,t:[],a:0,q:"自転車は、白の実線2本で示された路側帯を通行することができる。",e:"誤り。白の実線2本は歩行者用路側帯で、自転車などの軽車両は通行できません。"},
+{id:"nb23",c:"ped",f:2,t:[],a:1,q:"普通自転車は、「普通自転車歩道通行可」の標識がある歩道を通行できるが、歩道の中央から車道寄りの部分を徐行しなければならない。",e:"歩道を通行するときは、車道寄り（指定部分があればそこ）を徐行し、歩行者の通行を妨げるときは一時停止します。"},
+{id:"nb24",c:"ped",f:2,t:["word"],a:0,q:"普通自転車が歩道を通行しているとき、前方に歩行者がいれば、警音器を鳴らして道をあけてもらえばよい。",e:"誤り。歩行者の通行を妨げることになるときは、一時停止しなければなりません。"},
+{id:"nb25",c:"ped",f:2,t:["num", "exc"],a:1,q:"13歳未満の子どもや70歳以上の高齢者が運転する普通自転車は、標識がなくても歩道を通行することができる。",e:"このほか身体の障害がある人や、車道の通行が危険でやむを得ない場合も歩道を通行できます。"},
+{id:"nb26",c:"ped",f:2,t:[],a:1,q:"自転車は、付近に自転車横断帯があるときは、その自転車横断帯を通って道路を横断しなければならない。",e:"道路を横断しようとする自転車は、近くに自転車横断帯があればそこを通って横断します。"},
+{id:"nb27",c:"ped",f:2,t:["read"],a:1,q:"歩行者用信号機に「歩行者・自転車専用」の表示がある場合、自転車はその歩行者用信号機の信号に従わなければならない。",e:"「歩行者・自転車専用」の表示がある歩行者用信号は、自転車も対象になります。"},
+{id:"nb28",c:"ped",f:1,t:["exc"],a:1,q:"自転車道が設けられている道路では、普通自転車は、車道を横断する場合や道路工事などやむを得ない場合を除き、自転車道を通行しなければならない。",e:"自転車道がある道路では、普通自転車は原則として自転車道を通行します（道路交通法63条の3）。"},
+{id:"nb29",c:"ped",f:3,t:["new", "num"],a:1,q:"16歳未満の人は、特定小型原動機付自転車（電動キックボードなど）を運転してはならない。",e:"特定小型原付は運転免許が不要ですが、16歳未満の運転は禁止されています。"},
+{id:"nb30",c:"ped",f:3,t:["new"],a:0,q:"特定小型原動機付自転車を運転するには、原付免許が必要である。",e:"誤り。特定小型原付は運転免許不要です（16歳以上）。"},
+{id:"nb31",c:"ped",f:2,t:["new", "num", "exc"],a:1,q:"特定小型原動機付自転車は、最高速度表示灯を点滅させ、時速6kmを超える速度が出ない状態にすれば、「普通自転車等及び歩行者等専用」の標識がある歩道を通行することができる。",e:"この状態の特例特定小型原付は、標識で認められた歩道を通行できます。原則は車道通行です。"},
+{id:"nb32",c:"ped",f:2,t:["new"],a:0,q:"特定小型原動機付自転車には、ナンバープレートの取り付けや自賠責保険への加入は必要ない。",e:"誤り。特定小型原付もナンバープレート（標識）の取り付けと自賠責保険（共済）への加入が必要です。"},
+{id:"nb33",c:"ped",f:2,t:["new", "word"],a:0,q:"特定小型原動機付自転車の運転者は、乗車用ヘルメットの着用が義務づけられており、着用しないと違反になる。",e:"誤り。特定小型原付のヘルメット着用は努力義務です（着用するよう努めなければならない）。"},
+{id:"nb34",c:"ped",f:2,t:["num"],a:0,q:"「並進可」の標識がある道路では、普通自転車は3台まで横に並んで通行することができる。",e:"誤り。並進可の標識がある場所で並んで通行できるのは2台までです。"},
+{id:"nb35",c:"ped",f:2,t:[],a:1,q:"交差点やその付近の横断歩道のない場所を歩行者が横断しているときは、その歩行者の通行を妨げてはならない。",e:"横断歩道がなくても、交差点やその付近を横断する歩行者の通行を妨げてはなりません。"},
+{id:"nb36",c:"ped",f:1,t:[],a:0,q:"歩道や路側帯のない道路では、歩行者は道路の左側端に寄って通行しなければならない。",e:"誤り。歩道や路側帯のない道路では、歩行者は道路の右側端に寄って通行します。"},
+{id:"nb38",c:"hw",f:2,t:["num"],a:0,q:"自動車専用道路にも、高速自動車国道と同じように時速50kmの法定最低速度がある。",e:"誤り。法定最低速度（50km）があるのは高速自動車国道の本線車道だけで、自動車専用道路にはありません。"},
+{id:"nb39",c:"hw",f:2,t:["num"],a:1,q:"原動機付自転車や総排気量125cc以下の普通自動二輪車、ミニカーは、高速道路を通行することができない。",e:"これらの車は高速自動車国道も自動車専用道路も通行できません。"},
+{id:"nb40",c:"hw",f:3,t:["word"],a:0,q:"片側3車線の高速道路では、追い越しのとき以外でも、いちばん右側の車両通行帯を通行し続けてよい。",e:"誤り。高速道路のいちばん右側の通行帯は追い越しのためにあけておき、それ以外は左側の通行帯を通行します。"},
+{id:"nb41",c:"hw",f:2,t:[],a:1,q:"高速道路の本線車道から出るときは、減速車線に入ってから十分に速度を落とす。",e:"本線車道上で急に減速すると追突されるおそれがあるので、減速車線に入ってから減速します。"},
+{id:"nb42",c:"hw",f:2,t:["word"],a:0,q:"高速道路で燃料切れのため運転できなくなっても、交通違反にはならない。",e:"誤り。高速道路で燃料不足などにより運転できなくなることは違反になります。事前に燃料を点検しておきます。"},
+{id:"nb43",c:"hw",f:2,t:[],a:1,q:"高速道路で故障などのため車を止めたときは、同乗者をガードレールの外側など安全な場所に避難させる。",e:"車内や車の周囲は追突の危険があるので、同乗者を安全な場所に避難させます。"},
+{id:"nb44",c:"hw",f:2,t:[],a:0,q:"高速道路の本線車道に入るときは、加速車線を使わずに、加速車線の始まりの部分からすぐに本線車道に入るほうがよい。",e:"誤り。加速車線で十分に速度を上げ、本線車道の車の進行を妨げないようにして合流します。"},
+{id:"nb45",c:"hw",f:2,t:["num"],a:0,q:"高速道路で二輪車の二人乗りができるのは、18歳以上で二輪免許を受けて1年以上の人である。",e:"誤り。高速道路での二人乗りは、20歳以上で、二輪免許を受けていた期間が3年以上の人に限られます。"},
+{id:"nb46",c:"hw",f:2,t:["num"],a:1,q:"高速道路で路面が雨にぬれ、タイヤがすり減っている場合は、乾燥した路面のときの2倍程度の車間距離が必要になることがある。",e:"ぬれた路面やすり減ったタイヤでは停止距離が長くなるので、乾燥時の約2倍程度の車間距離が必要になることがあります。"},
+{id:"nb47",c:"hw",f:1,t:[],a:1,q:"高速道路のトンネルの出口や切り通しなどでは、強い横風にハンドルをとられることがあるので注意する。",e:"トンネル出口などは横風を受けやすいので、ハンドルをしっかり握り速度を落とします。"},
+{id:"nb48",c:"hw",f:2,t:[],a:0,q:"高速道路で反対方向に行きたいときは、中央分離帯の切れ目から転回してもよい。",e:"誤り。高速道路では転回、後退、中央分離帯の横切りは禁止されています。"},
+{id:"nb49",c:"hw",f:1,t:["exc"],a:1,q:"高速道路でも、パーキングエリアなどの駐車のために区画された場所や、料金支払いのために停止する場合は、駐停車することができる。",e:"高速道路は原則駐停車禁止ですが、駐車用に区画された場所や料金支払いのための停止などは例外です。"},
+{id:"nb50",c:"hw",f:2,t:["exc"],a:0,q:"高速自動車国道の本線車道では、渋滞しているときでも、時速50km未満で通行してはならない。",e:"誤り。法令の規定により速度を落とす場合や、渋滞で前の車に追突するおそれがあるときなど危険を防止するためやむを得ない場合は、最低速度に達しない速度で通行しても違反になりません（道路交通法75条の4）。"},
+{id:"nc1",c:"rule",f:3,t:["num"],a:1,q:"呼気1リットルにつき0.15ミリグラム以上のアルコールを身体に保有する状態で運転すると、酒気帯び運転として罰せられる。",e:"酒気帯び運転の罰則の基準は、呼気1リットル中0.15mg以上（血液1ミリリットル中0.3mg以上）です。"},
+{id:"nc2",c:"rule",f:2,t:["word"],a:0,q:"酒気帯び運転の罰則の基準に達しない程度の飲酒であれば、車を運転してもよい。",e:"酒気を帯びて運転すること自体が禁止されています。少しでも酒を飲んだら運転してはいけません。"},
+{id:"nc3",c:"rule",f:2,t:[],a:1,q:"運転者が酒を飲んでいることを知りながら、自分を送ってくれるように頼んでその車に同乗してはならない。",e:"酒気帯びの運転者に運送を要求・依頼して同乗することは禁止され、同乗者も罰せられます。"},
+{id:"nc4",c:"rule",f:2,t:["word"],a:0,q:"運転中に眠くなったときは、窓を開けて外の空気を入れながら運転を続ければよい。",e:"眠気を感じたら、安全な場所に車を止めて休息をとります。過労で正常な運転ができないおそれがあるときは運転してはいけません。"},
+{id:"nc5",c:"rule",f:2,t:["num"],a:0,q:"長時間運転するときは、4時間に1回程度休息をとるように運転計画を立てる。",e:"長時間運転するときは、少なくとも2時間に1回は休息をとるように計画します。"},
+{id:"nc6",c:"rule",f:2,t:["word"],a:0,q:"引っ越しなどで免許証の住所が変わったときは、次回の免許更新のときに届け出ればよい。",e:"免許証の記載事項に変更があったときは、速やかに住所地を管轄する公安委員会に届け出なければなりません。"},
+{id:"nc7",c:"rule",f:2,t:["word"],a:0,q:"運転免許証をなくしたときは、もう一度運転免許試験を受け直さなければならない。",e:"免許証をなくしたり汚したりしたときは、住所地を管轄する公安委員会に再交付を申請します。"},
+{id:"nc8",c:"rule",f:3,t:["word"],a:0,q:"運転免許を受けている人が免許証を持たずに運転すると、無免許運転になる。",e:"免許を受けていれば無免許運転ではなく、免許証不携帯の違反になります。"},
+{id:"nc9",c:"rule",f:2,t:[],a:1,q:"運転免許の停止処分を受けている期間中に車を運転すると、無免許運転になる。",e:"免許停止中は免許の効力がないため、運転すれば無免許運転になります。"},
+{id:"nc10",c:"rule",f:1,t:["num"],a:1,q:"行政処分の基礎となる違反点数は、原則として過去3年間の違反や事故の点数を合計して計算する。",e:"点数は原則として過去3年間を累積します。1年以上無事故・無違反の場合などには前の点数は加算されません。"},
+{id:"nc11",c:"rule",f:2,t:["new"],a:1,q:"初心運転者期間中に一定の基準以上の違反をした人は初心運転者講習を受けなければならず、受けなかった場合は再試験を受けることになる。",e:"初心運転者期間（免許取得後1年間）の制度で、講習を受けない場合やその後さらに違反した場合は再試験となります。"},
+{id:"nc12",c:"rule",f:3,t:["new"],a:1,q:"他の車の通行を妨害する目的で、急ブレーキをかけたり、車間距離を極端に詰めたりする妨害運転（あおり運転）をしてはならない。",e:"妨害運転は禁止されており、重い罰則と免許取消しの対象になります。"},
+{id:"nc13",c:"rule",f:2,t:["word"],a:0,q:"仮免許で運転の練習をするときは、仮免許練習中の標識を車の前か後ろのどちらかにつければよい。",e:"仮免許練習中の標識は、車の前と後ろの両方の見やすい位置につけなければなりません。"},
+{id:"nc15",c:"rule",f:2,t:["exc"],a:0,q:"危険を防止するためやむを得ない場合であっても、警音器を鳴らしてはならない。",e:"警音器は「警笛鳴らせ」の標識がある場所などのほか、危険を避けるためやむを得ないときは鳴らすことができます。"},
+{id:"nc17",c:"rule",f:1,t:[],a:1,q:"腕を車の外に出して斜め下に伸ばす手による合図は、徐行または停止をすることを表す。",e:"斜め下に伸ばす合図は、徐行・停止の合図です。"},
+{id:"nc18",c:"rule",f:1,t:["word"],a:0,q:"右腕を車の右側の外に出して水平に伸ばす手による合図は、左折をすることを表す。",e:"右腕を水平に伸ばすのは、右折または右への進路変更の合図です。"},
+{id:"nc19",c:"rule",f:2,t:["word"],a:0,q:"シートベルトの腰ベルトは、腹部をしっかり締めつけるように、できるだけ高い位置に締める。",e:"腰ベルトは、骨盤を巻くようにできるだけ低い位置に締めます。"},
+{id:"nc21",c:"env",f:2,t:[],a:1,q:"夜間は視界が悪くなり速度感覚がにぶるため、つい速度を出しすぎることがあるので注意する。",e:"夜間は昼間より見えにくく、速度を落として運転します。"},
+{id:"nc22",c:"env",f:3,t:["word"],a:0,q:"霧の中を走行するときは、前照灯を上向きにすると遠くまで照らせるので見やすくなる。",e:"霧のときは光が乱反射してかえって見えにくくなるので、前照灯は下向きにし、霧灯などを早めにつけます。"},
+{id:"nc23",c:"env",f:2,t:[],a:1,q:"霧のときは、前照灯や霧灯を早めにつけて速度を落とし、危険を防止するため必要に応じて警音器を使う。",e:"霧の中では中央線や前車の尾灯を目安に速度を落とし、必要に応じて警音器を使います。"},
+{id:"nc24",c:"env",f:2,t:[],a:1,q:"雪道では、車の通った跡（わだち）を選んで走るほうが安全である。",e:"雪道ではわだちを走るほうが滑りにくく安全です。"},
+{id:"nc25",c:"env",f:2,t:[],a:1,q:"橋の上やトンネルの出入口付近、日陰の場所は、路面が凍結しやすいので注意する。",e:"これらの場所は気温が下がりやすく、他の場所が乾いていても凍結していることがあります。"},
+{id:"nc26",c:"env",f:2,t:["word"],a:0,q:"冬用タイヤを装着していれば、凍結した路面でも乾燥した路面と同じように走行できる。",e:"冬用タイヤやチェーンを使っても凍結路は滑りやすいので、速度を落とし、急ブレーキ・急ハンドルを避けます。"},
+{id:"nc27",c:"env",f:2,t:["num"],a:1,q:"路面が雨にぬれ、タイヤがすり減っている場合の停止距離は、乾燥した路面でタイヤの状態がよい場合に比べて2倍程度に延びることがある。",e:"雨の日やタイヤがすり減っているときは停止距離が長くなるので、車間距離を十分にとります。"},
+{id:"nc28",c:"env",f:2,t:["word"],a:0,q:"下り坂では、ギアをニュートラルにして惰性で走ると燃料の節約になるのでよい。",e:"下り坂ではニュートラルにせず、低速ギアに入れてエンジンブレーキを活用します。"},
+{id:"nc29",c:"env",f:3,t:["exc"],a:0,q:"踏切の警報機が鳴っていなければ、一時停止をせずに安全を確かめて通過することができる。",e:"一時停止しなくてよいのは信号機のある踏切で青信号のときだけで、警報機が鳴っていなくても踏切の直前で一時停止します。"},
+{id:"nc30",c:"env",f:2,t:["word"],a:0,q:"夜間でも、道路照明があって明るい市街地の道路であれば、前照灯をつけずに運転してもよい。",e:"夜間に道路を通行するときは、明るい市街地でも前照灯や尾灯などをつけなければなりません。"},
+{id:"nc31",c:"env",f:1,t:["word"],a:0,q:"ぬかるみや砂利道では、高速ギアに入れ、加速しながら一気に通過する。",e:"ぬかるみや砂利道では、低速ギアに入れ、一定の速度で通過します。"},
+{id:"nc32",c:"env",f:2,t:[],a:1,q:"雨の日は路面がすべりやすいので、晴れの日よりも速度を落とし、車間距離を長くとって運転する。",e:"特に雨の降り始めは路面がすべりやすく、急ブレーキや急ハンドルを避けます。"},
+{id:"nc33",c:"car",f:2,t:[],a:1,q:"下り坂でブレーキが効かなくなったときは、減速チェンジをしてエンジンブレーキを効かせ、パーキングブレーキを引き、それでも止まらないときは道路わきの土砂などに突っ込んで車を止める。",e:"ブレーキが効かなくなったときの措置として教則に示されている方法です。"},
+{id:"nc34",c:"car",f:2,t:["word"],a:0,q:"走行中にタイヤがパンクしたときは、急ブレーキをかけてすぐに車を止める。",e:"ハンドルをしっかり握って車の方向を保ち、断続的にブレーキをかけて速度を落とし、道路の左端に止めます。"},
+{id:"nc35",c:"car",f:2,t:["read"],a:1,q:"後輪が横滑りを始めたときは、ブレーキはかけずにアクセルを緩め、後輪が滑った方向にハンドルを切って車の向きを立て直す。",e:"横滑りのときに急ブレーキをかけると、かえって滑りが大きくなります。"},
+{id:"nc36",c:"car",f:1,t:["read"],a:1,q:"対向車が中央線をはみ出してきて正面衝突のおそれがあるときは、警音器とブレーキを使ってできるだけ左側に避け、道路外が危険な場所でなければ道路外に出ることもためらわない。",e:"衝突の瞬間まであきらめず、少しでも衝撃を和らげるように努めます。"},
+{id:"nc37",c:"car",f:2,t:["exc"],a:0,q:"貨物自動車の荷台には、出発地の警察署長の許可がなければ、荷物を見張るための人であっても乗せることはできない。",e:"荷物を見張るための必要最小限度の人は、許可がなくても荷台に乗せることができます。"},
+{id:"nc38",c:"car",f:2,t:[],a:1,q:"荷物は、方向指示器や番号標（ナンバープレート）、制動灯、尾灯などが外から見えなくなるような積み方をしてはならない。",e:"視野や運転操作を妨げたり、灯火類や番号標が見えなくなったりするような積載は禁止されています。"},
+{id:"nc39",c:"car",f:2,t:["word"],a:0,q:"荷物を積むときは、重い荷物を上に、軽い荷物を下に積むと車が安定する。",e:"重心が高くなると不安定になるので、重い荷物を下に、軽い荷物を上に積みます。"},
+{id:"nc40",c:"car",f:1,t:["word"],a:0,q:"エンジンオイルの量は、日常点検の項目には含まれていない。",e:"エンジンオイルの量は、ブレーキ液や冷却水の量などとともにエンジンルームの日常点検項目です。"},
+{id:"nc41",c:"car",f:2,t:[],a:1,q:"タイヤの溝の深さが十分かどうかは、スリップサインで確かめることができる。",e:"溝がすり減ってスリップサインが現れたタイヤは使用してはいけません。"},
+{id:"nc42",c:"car",f:1,t:[],a:1,q:"タイヤの空気圧が低いまま高速で走行すると、タイヤが波打つスタンディングウェーブ現象が起こり、破裂するおそれがある。",e:"空気圧が低いとタイヤが波打つように変形して過熱し、破裂することがあります。高速走行の前には空気圧が適正か点検しておきます。"},
+{id:"nc43",c:"car",f:2,t:["word"],a:0,q:"AT車を運転するときは、左足でブレーキペダルを、右足でアクセルペダルを操作するとよい。",e:"AT車でもブレーキペダルとアクセルペダルはどちらも右足で操作します。"},
+{id:"nc44",c:"car",f:2,t:[],a:1,q:"AT車で発進するときは、ブレーキペダルをしっかり踏んでからチェンジレバーを操作する。",e:"ブレーキを踏まずにレバーを入れると、クリープ現象などで車が急に動き出すおそれがあります。"},
+{id:"nc45",c:"car",f:1,t:[],a:1,q:"運転席のシートの前後の位置は、クラッチペダルをいっぱいに踏み込んだとき、ひざがわずかに曲がる状態に合わせる。",e:"正しい運転姿勢をとれるように、運転する前にシートを調節します。"},
+{id:"nc46",c:"car",f:2,t:["word"],a:0,q:"ルームミラーやドアミラーを正しく調整すれば死角はなくなるので、発進や進路変更のときに目で直接確かめる必要はない。",e:"ミラーを調整しても死角は残るので、目視でも安全を確かめます。"},
+{id:"nc47",c:"car",f:3,t:["word"],a:0,q:"ガードレールにぶつけただけの物損事故で、けが人がいなければ、警察官に報告しなくてもよい。",e:"物損事故でも、運転者は警察官に事故の発生を報告しなければなりません。"},
+{id:"nc48",c:"car",f:2,t:[],a:1,q:"負傷者の出血がひどいときは、救急車が来るまでの間、清潔なガーゼやハンカチなどで傷口を直接強く押さえて止血する。",e:"直接圧迫止血は、応急救護の基本的な止血方法です。"},
+{id:"nc49",c:"car",f:2,t:["word"],a:0,q:"自賠責保険（自賠責共済）では、人身事故の損害だけでなく、車や建物などの物損事故の損害も補償される。",e:"自賠責保険が補償するのは人身事故（対人）の損害だけです。物損は任意保険などで備えます。"},
+{id:"nc50",c:"car",f:1,t:[],a:1,q:"ブレーキをかけるときは、最初はできるだけ軽く踏み、数回に分けて踏むようにする。",e:"数回に分けて踏むと制動灯が点滅し、後続車への合図にもなります。"}
+];
+
+/* 危険予測（イラスト問題を文章で再現）。3問すべて正解で2点 */
+const RISK = [
+{id:"k1",f:3,scene:"時速30kmで進行しています。前方の左側にトラックが止まっていて、対向車線から乗用車が近づいてきています。",items:[
+ ["対向車が来ているので、トラックの手前で速度を落とし、対向車が通過してからトラックの右側を通過する。",1,"障害物のある側（自分）が譲ります。"],
+ ["トラックの陰から歩行者が出てくるかもしれないので、トラックとの間に安全な間隔をとって通過する。",1,"駐車車両の陰は飛び出しの定番。"],
+ ["対向車より先に通過できるように、警音器を鳴らして加速し、トラックの右側を通過する。",0,"加速して先に出るのは危険。障害物のある側が譲ります。"]]},
+{id:"k2",f:3,scene:"交差点で右折待ちをしています。対向車線の先頭のトラックが止まり、ライトを点滅させて道を譲ってくれました。",items:[
+ ["トラックの陰から二輪車が直進してくるかもしれないので、様子を見ながら少しずつ進む。",1,"「サンキュー事故」の典型。トラックの左側を二輪車がすり抜けてきます。"],
+ ["トラックが譲ってくれたので、待たせないように素早く右折する。",0,"急いで右折すると陰の二輪車と衝突します。"],
+ ["右折先の横断歩道を歩行者や自転車が渡っているかもしれないので注意する。",1,"右折後の横断歩道も確認。"]]},
+{id:"k3",f:3,scene:"時速30kmで進行しています。前方の交差点で左折しようとしていますが、左側を自転車が同じ方向に進んでいます。",items:[
+ ["自転車が交差点を直進するかもしれないので、自転車の動きに注意し、先に行かせてから左折する。",1,"巻き込み防止。自転車を先に行かせます。"],
+ ["自転車より先に左折するため、加速して自転車を追い越してから左折する。",0,"追い越してすぐ左折すると巻き込みの危険があります。"],
+ ["あらかじめ左折の合図を出し、道路の左端に寄って徐行しながら左折する。",1,"左折の基本どおり。"]]},
+{id:"k4",f:2,scene:"夜間、時速30kmで住宅街の道路を進行しています。対向車のライトがまぶしく感じます。",items:[
+ ["対向車のライトで道路の中央付近の歩行者が見えなくなることがあるので、速度を落として注意する。",1,"蒸発現象への備え。"],
+ ["まぶしいので、対向車のライトを直視しないよう、視点をやや左前方に移す。",1,"眩惑を避ける正しい方法。"],
+ ["対向車に自分の存在を知らせるため、前照灯を上向きにして進む。",0,"対向車と行き違うときは下向き（減光）にします。"]]},
+{id:"k5",f:3,scene:"片側2車線の道路の右側の車線を時速40kmで進行しています。左側の車線の車が、前方の横断歩道の手前で止まっています。横断歩道に歩行者は見えません。",items:[
+ ["止まっている車の陰から歩行者が横断してくるかもしれないので、その車の側方を通って前方に出る前に一時停止する。",1,"横断歩道手前の停止車両の横を通って前に出る前は一時停止が義務です。"],
+ ["左側の車は渋滞で止まっているだけかもしれないので、そのままの速度で通過する。",0,"横断歩道の手前で止まっている車がいる場合は、一時停止が必要です。"],
+ ["歩行者が見えなければ、一時停止しないで徐行して通過すればよい。",0,"見えなくても一時停止が必要です。"]]},
+{id:"k6",f:2,scene:"時速30kmで進行しています。前方左側のバス停留所に止まっている路線バスが、右の方向指示器を出しました。",items:[
+ ["バスが発進しようとしているので、速度を落として発進を妨げないようにする。",1,"路線バスの発進を妨げてはいけません。"],
+ ["バスの前方を横断しようとする歩行者がいるかもしれないので注意する。",1,"バスを降りた人の横断に注意。"],
+ ["バスが発進する前に、加速してバスの横を通過する。",0,"発進の妨げになり危険です。"]]},
+{id:"k7",f:2,scene:"高速道路の加速車線を時速60kmで進行しています。本線車道の左側の車線を、後方から大型トラックが近づいてきています。",items:[
+ ["加速車線で十分に加速し、トラックとの距離や速度を確かめ、トラックが近ければその後ろに合流する。",1,"本線車道の車が優先。"],
+ ["トラックが速度を落として入れてくれると考え、そのまま本線車道に進路を変える。",0,"相手が譲ってくれると考えるのは危険です。"],
+ ["加速車線の終わりが近いので、本線車道の車の有無にかかわらず合流する。",0,"本線車道の車の進行を妨げてはいけません。"]]},
+{id:"k8",f:2,scene:"時速20kmで進行しています。前方に踏切があり、踏切の向こう側の道路が渋滞しています。",items:[
+ ["踏切の向こう側に自分の車が入る余地があることを確かめてから踏切に入る。",1,"踏切内で止まるおそれがあるときは入ってはいけません。"],
+ ["前の車に続いて進めば渋滞はすぐに動くので、そのまま踏切に入る。",0,"踏切内で立ち往生するおそれがあります。"],
+ ["踏切の直前で一時停止し、自分の目と耳で左右の安全を確かめる。",1,"信号機のない踏切では一時停止が義務。"]]},
+{id:"k9",f:2,scene:"時速30kmで進行しています。左側の公園の前の歩道で、子どもたちがボール遊びをしています。",items:[
+ ["ボールが道路に転がり出て、子どもが追いかけて飛び出してくるかもしれないので、速度を落とす。",1,"子どもの飛び出しの典型パターン。"],
+ ["子どもは車に気づいているはずなので、そのままの速度で進行する。",0,"子どもは遊びに夢中で車に気づかないことがあります。"],
+ ["子どもとの間に安全な間隔をとるか、徐行して進行する。",1,"歩行者のそばを通るときの義務。"]]},
+{id:"k10",f:2,scene:"雨の日、時速40kmで下り坂のカーブにさしかかりました。",items:[
+ ["路面が滑りやすいので、カーブの手前の直線部分で十分に速度を落とす。",1,"カーブの手前で減速が基本。"],
+ ["カーブの途中で強くブレーキをかけて速度を調節する。",0,"カーブ中の急ブレーキはスリップの原因です。"],
+ ["対向車がカーブで中央線をはみ出してくるかもしれないので、道路の左側に寄って注意して進む。",1,"対向車のはみ出しに備えます。"]]},
+{id:"k11",f:2,scene:"時速30kmで進行しています。前方は信号機のない見通しの悪い交差点で、左側の道路から自転車が出てくるのがカーブミラーに映っています。",items:[
+ ["自転車が一時停止しないで出てくるかもしれないので、徐行して自転車の動きに注意する。",1,"見通しのきかない交差点は徐行場所でもあります。"],
+ ["こちらの道路のほうが広いので、自転車が止まると考えてそのままの速度で進む。",0,"相手が止まると決めつけるのは危険です。"],
+ ["カーブミラーに映っていない車や歩行者もいるかもしれないので、ミラーだけに頼らず直接確認する。",1,"ミラーには死角があり、距離感もつかみにくいです。"]]},
+{id:"k12",f:3,scene:"時速30kmで進行しています。前方を自転車が走っていて、その先の道路の左側に車が止まっています。",items:[
+ ["自転車が止まっている車を避けるため右に出てくるかもしれないので、速度を落として自転車の動きに注意する。",1,"自転車の進路変更を予測。"],
+ ["自転車の右側を通過するときは、十分な間隔をとるか、間隔がとれないときはそれに応じた安全な速度で進む。",1,"2026年4月施行の改正ルール。"],
+ ["自転車に注意を促すため、警音器を鳴らしてから追い越す。",0,"警音器はみだりに鳴らせません。自転車が驚いてふらつく危険もあります。"]]},
+{id:"ka1",f:2,scene:"時速40kmで進行しています。前方の交差点の信号は青色ですが、歩行者用信号が青色の点滅をしています。後続車が近づいてきています。",items:[
+ ["前方の信号がまもなく黄色に変わるおそれがあるので、速度を落として停止の準備をする。",1,"歩行者用信号の点滅は信号が変わる前ぶれ。早めに減速して備える。"],
+ ["信号が変わる前に交差点を通過できるよう、加速して進行する。",0,"加速すると黄色や赤色で交差点に進入するおそれがあり危険。"],
+ ["急ブレーキをかけると後続車に追突されるおそれがあるので、ブレーキを数回に分けて踏み、後続車に停止することを知らせる。",1,"ブレーキ灯を点滅させて後続車に合図し、追突を防ぐ。"]]},
+{id:"ka2",f:2,scene:"時速20kmで交差点に近づき、右折しようとしています。対向車線から二輪車が直進してきていて、その後ろに大型トラックが続いています。",items:[
+ ["二輪車は遠くに見えて速度も遅く感じられるので、その前に先に右折する。",0,"二輪車は実際より遠く遅く見えがち。直進車の進行を妨げてはならない。"],
+ ["トラックの陰から別の二輪車などが出てくるおそれがあるので、対向車が通過して安全を確かめてから右折する。",1,"大型車の陰は死角になる。対向車が過ぎてから確認して右折する。"],
+ ["右折先の横断歩道を歩行者や自転車が渡っているかもしれないので、右折先の安全も確かめる。",1,"右折先の横断歩道の歩行者などにも注意が必要。"]]},
+{id:"ka3",f:2,scene:"片側2車線の道路の左側の車線を時速40kmで進行しています。前方の左側に駐車車両があり、右側の車線を後方から乗用車が近づいてきています。",items:[
+ ["駐車車両の手前で右の車線に移るため、早めに合図を出し、後方の車の速度や距離を確かめる。",1,"進路変更は約3秒前に合図し、後方の車との安全を確かめてから行う。"],
+ ["後方の車はまだ離れていると思われるので、合図と同時にすばやく右の車線に移る。",0,"合図は進路変更の約3秒前に行い、後続車の進行を妨げないか確かめてから移る。"],
+ ["駐車車両のドアが急に開いたり、車の陰から人が出てきたりするおそれがある。",1,"駐車車両の側方を通るときは、ドアの開放や人の飛び出しに備え間隔をあける。"]]},
+{id:"kb1",f:2,scene:"高速道路を時速80kmで進行しています。前方のカーブの先で車が渋滞して止まっているのが見えてきました。",items:[
+ ["渋滞の最後尾に急に追いつくおそれがあるので、早めにアクセルを離し、ブレーキを数回に分けて踏んで速度を落とす。",1,"早めの減速と断続的なブレーキで、後続車にも減速を知らせます。"],
+ ["後続車は渋滞に気づいていないおそれがあるので、非常点滅表示灯をつけるなどして後続車に知らせる。",1,"カーブの先の渋滞は後続車から見えにくいので、ブレーキを数回に分けて踏んだり非常点滅表示灯をつけたりして、追突されないよう知らせます。"],
+ ["後続車に追突されないよう、前の車にできるだけ近づいて止まる。",0,"前の車に近づきすぎると、追突されたとき玉突き事故になります。前車との間隔は十分にとって止まります。"]]},
+{id:"kb2",f:2,scene:"時速30kmで進行しています。前方の道路の左側を電動キックボード（特定小型原動機付自転車）が走っていて、その先に駐車車両があります。",items:[
+ ["電動キックボードは駐車車両を避けるため右に出てくるかもしれないので、速度を落として様子を見る。",1,"前方の障害物を避けて急に進路を変えることを予測します。"],
+ ["警音器を鳴らして電動キックボードに止まってもらい、先に駐車車両の横を通過する。",0,"警音器は危険を避けるため以外はみだりに鳴らしません。速度を落としてキックボードを先に行かせます。"],
+ ["電動キックボードの右側を通過するときは、十分な間隔をとり、とれないときは安全な速度で進む。",1,"小さな車輪でふらつきやすいので、十分な側方間隔をとります。"]]},
+{id:"kb3",f:2,scene:"時速30kmで進行しています。前方左側に止まっている車の運転席に人が乗っていて、ドアが開きかけています。",items:[
+ ["ドアが開いて人が降りてくるかもしれないので、速度を落とし、右側に十分な間隔をとって通過する。",1,"駐車車両のドアが急に開くことを予測し、間隔と速度で備えます。"],
+ ["警音器を鳴らせばドアは開かないので、そのままの速度で通過する。",0,"警音器を鳴らしても相手が気づくとは限りません。速度を落として備えます。"],
+ ["対向車があって右側に十分な間隔がとれないときは、手前で速度を落とし、場合によっては停止して様子を見る。",1,"間隔がとれないまま通過するとドアに接触するおそれがあります。"]]},
+{id:"kc1",f:2,scene:"時速20kmで上り坂を進行しています。前方の信号が赤に変わり、前の車が坂の途中で止まろうとしています。",items:[
+ ["前の車が発進するときに後退してくるおそれがあるので、車間距離を十分にとって止まる。",1,"上り坂では前の車が発進時に後退することがあるので、間隔をあけて止まります。"],
+ ["後続車が止まりやすいように、前の車にできるだけ近づいて止まる。",0,"前の車に近づきすぎると、後退してきたときに衝突するおそれがあります。"],
+ ["信号が青に変わって発進するときは、パーキングブレーキを使うなどして車が後退しないようにする。",1,"坂道発進では後退しないように操作します。"]]},
+{id:"kc2",f:2,scene:"時速30kmで雪の積もった道路を進行しています。前方は橋になっていて、その先は下り坂のカーブです。",items:[
+ ["橋の上は凍結していることがあるので、橋の手前で十分に速度を落とす。",1,"橋の上は凍結しやすいので、手前で減速します。"],
+ ["カーブに入ってから強くブレーキをかけて、速度を調節する。",0,"雪道のカーブで強いブレーキをかけるとスリップするおそれがあるので、カーブの手前で速度を落とします。"],
+ ["冬用タイヤを装着しているので、乾燥した路面と同じ速度で通過してよい。",0,"冬用タイヤでも雪道や凍結路はすべりやすいので、速度を落とします。"]]},
+{id:"kc3",f:2,scene:"時速5kmで駐車場から道路に出ようとして、歩道の手前まで進んできました。右側に止まっているトラックで、道路の右方向が見えません。",items:[
+ ["歩道の手前で一時停止し、歩行者や自転車が来ていないかを確かめる。",1,"道路外の施設から道路に出るときは、歩道の直前で一時停止しなければなりません。"],
+ ["トラックの陰から車や自転車が来るかもしれないので、少しずつ前に出て安全を確かめる。",1,"見えない部分は少しずつ進んで安全を確かめます。"],
+ ["歩道に歩行者が見えなければ、一時停止しないで道路に出てよい。",0,"歩行者がいなくても、歩道を横切る前には一時停止しなければなりません。"]]}
+];
+
+/* ---------- 出典リンク ----------
+   交通の方法に関する教則（警察庁・国家公安委員会告示）の該当節にページ指定で飛ぶ。
+   新ルールや標識は公式ページを追加で出す */
+const KYO = "https://www.npa.go.jp/bureau/traffic/20241113kyousoku.pdf";
+const SEC = {
+  "1-2":[7,"第1章第2節 信号、標識・標示に従うこと"], "1-3":[8,"第1章第3節 警察官などの指示に従うこと"],
+  "3":[18,"第3章 特定小型原動機付自転車や自転車に乗る人の心得"],
+  "4-1":[29,"第4章第1節 運転に当たっての注意"], "4-2":[30,"第4章第2節 運転免許の仕組み"],
+  "4-3":[32,"第4章第3節 自動車の点検"], "4-4":[36,"第4章第4節 乗車と積載"],
+  "4-5":[38,"第4章第5節 安全運転に必要な知識など"], "5-1":[41,"第5章第1節 安全な発進"],
+  "5-2":[43,"第5章第2節 自動車の通行するところ"], "5-3":[46,"第5章第3節 歩行者の保護など"],
+  "5-4":[49,"第5章第4節 安全な速度と車間距離"], "5-5":[51,"第5章第5節 進路変更など"],
+  "5-6":[53,"第5章第6節 追越しなど"], "5-7":[55,"第5章第7節 交差点の通り方"],
+  "5-8":[57,"第5章第8節 駐車と停車"], "5-9":[62,"第5章第9節 オートマチック車などの運転"],
+  "6-1":[64,"第6章第1節 踏切"], "6-2":[65,"第6章第2節 坂道・カーブ"], "6-3":[66,"第6章第3節 夜間"],
+  "6-4":[68,"第6章第4節 悪天候など"], "6-5":[69,"第6章第5節 緊急時の措置"],
+  "7-1":[70,"第7章第1節 高速道路に入る前の心得"], "7-2":[71,"第7章第2節 高速道路の走行上の注意"],
+  "10-1":[83,"第10章第1節 交通事故のとき"], "10-2":[84,"第10章第2節 故障などのとき"], "10-3":[84,"第10章第3節 災害などのとき"],
+  "11-1":[87,"第11章第1節 自動車所有者などの義務"],
+  "1-4":[9,"第1章第4節 道路でしてはいけないことなど"], "2-2":[12,"第2章第2節 歩行者などの通るところ"],
+  "8-1":[75,"第8章第1節 二輪車の運転者の心得"], "8-3":[77,"第8章第3節 二輪車の安全な運転の方法"]
+};
+// 1問ずつ教則と照合して直した分（none＝教則に載っていないので法律の条文へ）
+const SRC_FIX = {"s12": "5-7", "na23": "5-2", "na24": "5-2", "na25": "5-2", "na26": "5-2", "na36": "8-3", "nb30": "none", "kb2": "5-3", "p19": "5-8", "r9": "1-4", "r11": "5-1", "r15": "5-1", "r16": "5-8", "r21": "4-5", "na42": "5-4", "nc1": "none", "nc3": "1-4", "nc12": "none", "ka3": "5-5", "r1": "4-1", "r2": "4-1", "r3": "none", "r18": "none", "nc6": "none", "nc7": "none", "nc11": "none", "p16": "5-8", "p17": "5-8", "c13": "5-4", "nb10": "5-8", "v20": "5-4", "c12": "5-7", "na37": "5-7", "nc50": "5-4", "c11": "none", "c14": "none", "na28": "5-2", "nb36": "2-2", "k6": "5-2", "v24": "5-3", "na38": "none", "v19": "5-2", "w4": "5-3", "w12": "5-3", "na50": "5-3", "k1": "5-6", "kb3": "5-3", "w14": "5-3", "w15": "5-3", "na49": "5-2", "i8": "5-5", "i10": "5-2", "i11": "5-2", "i12": "5-2", "i13": "5-4", "i17": "5-5", "v9": "5-6", "v15": "5-6", "na27": "5-2", "na33": "5-5", "na34": "5-5", "nb35": "5-3", "nc18": "5-5", "ka1": "5-4", "kc3": "5-3", "nc43": "none", "v10": "5-6", "p3": "5-8", "p4": "5-8", "na47": "5-6", "v4": "5-4", "v12": "5-6", "v22": "4-5", "p8": "5-8", "p22": "5-8", "nb5": "5-8", "nb18": "5-8", "k11": "5-7", "nb11": "5-8", "nb12": "5-8", "e3": "6-3", "e6": "6-3", "e22": "6-2", "e23": "5-6", "nc27": "5-4", "e8": "6-2", "v6": "5-4", "v7": "none", "h11": "5-1", "nb39": "7-1", "nb40": "5-2", "nb42": "7-1", "nb45": "8-1", "nc31": "8-3", "nc42": "7-1", "nc10": "none", "nc49": "none", "h7": "7-2", "c7": "4-2", "nb9": "5-8", "nb43": "7-2", "r8": "4-1"};
+// 上から順に最初に当てはまったものを使う
+const SEC_RULES = [
+  [/手信号|警察官が|交通巡視員/, "1-3"],
+  [/地震|災害/, "10-3"],
+  [/事故|負傷者|止血|救急/, "10-1"],
+  [/故障|停止表示器材|けん引/, "10-2"],
+  [/自賠責|任意保険|保有者は/, "11-1"],
+  [/特定小型|電動キックボード|並進|自転車道|普通自転車|自転車は|自転車などの軽車両|自転車横断帯を通って/, "3"],
+  [/踏切/, "6-1"],
+  [/高速道路に入る前|高速道路を通行する前/, "7-1"],
+  [/高速|本線車道|加速車線|減速車線|自動車専用道路|パーキングエリア/, "7-2"],
+  [/霧|雪|凍結|冬用タイヤ|ハイドロプレーニング|雨|ぬかるみ|砂利/, "6-4"],
+  [/夜間|前照灯|蒸発現象/, "6-3"],
+  [/ブレーキが効かなく|パンク|横滑り|正面衝突/, "6-5"],
+  [/坂|カーブ|エンジンブレーキ|フェード|ベーパーロック/, "6-2"],
+  [/AT車|チェンジレバー|クリープ/, "5-9"],
+  [/シートベルト|チャイルドシート|ヘッドレスト|シートの|ミラー|運転姿勢/, "5-1"],
+  [/免許|初心者マークは|初心運転者|違反点数|無免許/, "4-2"],
+  [/点検|スリップサイン|タイヤの溝|空気圧|エンジンオイル/, "4-3"],
+  [/積|荷物|荷台|乗車定員/, "4-4"],
+  [/酒|眠|疲れ|薬|携帯電話|げた|履物|休息|運転計画|妨害運転|離れるとき|離れて/, "4-1"],
+  [/遠心力|内輪差|制動距離|空走距離|停止距離|重くなる|視野/, "4-5"],
+  [/駐車|停車|駐停車/, "5-8"],
+  [/環状交差点|右折|左折|交差点|優先道路|緊急自動車/, "5-7"],
+  [/追い越|追越|追い抜|割り込|二重追/, "5-6"],
+  [/進路変更|進路を変|合図|警音器|警笛/, "5-5"],
+  [/横断歩道|歩行者|子ども|盲導犬|つえ|車いす|安全地帯|路面電車|通学|マーク|泥|水たまり/, "5-3"],
+  [/軌道敷|通行帯|左に寄って通行|路線バス/, "5-2"],
+  [/徐行|速度|車間距離/, "5-4"]
+];
+const CAT_SEC = {sig:"1-2", sign:"1-2", int:"5-7", spd:"5-4", park:"5-8", ped:"5-3", hw:"7-2", rule:"4-1", env:"6-4", car:"4-5", risk:"5-3"};
+const EXTRA = [
+  [/中央線|生活道路|時速30km/, "生活道路の法定速度30km/h（警察庁）", "https://www.npa.go.jp/bureau/traffic/seikatsudouro/seikatsudoro.html"],
+  [/自転車の右側を通過|自転車との間に十分な間隔|電動キックボードの右側を通過/, "自転車の側方通過の新ルール（広島県警）", "https://www.pref.hiroshima.lg.jp/site/police/jitensya-rule.html"],
+  [/特定小型|電動キックボード/, "特定小型原動機付自転車（警察庁）", "https://www.npa.go.jp/bureau/traffic/anzen/tokuteikogata.html"],
+  [/1\.2倍|1\.1倍|3\.8m/, "積載制限の改正（大阪府警）", "https://www.police.pref.osaka.lg.jp/kotsu/kaisei/13057.html"]
+];
+function sources(x){
+  const text = x.c === "risk" ? x.scene + x.items.map(i => i[0]).join("") : x.q;
+  let key = (x.c === "sig" || (x.c === "sign" && !/路側帯|駐停車/.test(text))) ? null : undefined;
+  if (key === undefined) for (const [re, k] of SEC_RULES) if (re.test(text)) { key = k; break; }
+  if (!key) key = CAT_SEC[x.c];
+  if (/手信号|警察官が|交通巡視員/.test(text)) key = "1-3";
+  if (SRC_FIX[x.id]) key = SRC_FIX[x.id];
+  const out = [];
+  if (key === "none") out.push({t:"道路交通法（e-Gov法令検索）", u:"https://laws.e-gov.go.jp/law/335AC0000000105"});
+  else { const [pg, title] = SEC[key]; out.push({t:"交通の教則 " + title + "（警察庁）", u: KYO + "#page=" + pg}); }
+  if (x.s || x.c === "sign") out.push({t:"道路標識一覧（国土交通省）", u:"https://www.mlit.go.jp/road/sign/sign/douro/ichiran.pdf"});
+  EXTRA.forEach(([re, t, u]) => { if (re.test(text) && !out.some(o => o.u === u)) out.push({t, u}); });
+  return out;
+}
+function srcHtml(x){ return `<div class="src"><span class="small muted">載っているところ</span>${sources(x).map(o => `<a href="${o.u}" target="_blank" rel="noopener">${esc(o.t)}</a>`).join("")}</div>`; }
+
+/* ---------- 記録 ---------- */
+const KEY = "futamata-drill-v1";
+let S = { r:{}, mocks:[], day:"", today:0 };
+try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
+const todayStr = new Date().toISOString().slice(0,10);
+if (S.day !== todayStr){ S.day = todayStr; S.today = 0; }
+
+const ALL = {}; Q.forEach(x => ALL[x.id] = x); RISK.forEach(x => ALL[x.id] = Object.assign({c:"risk",t:[]}, x));
+function rec(id){ return S.r[id] || (S.r[id] = {n:0,ok:0,ng:0,st:0,lw:0}); }
+function isWeak(id){ const r = S.r[id]; return r && r.ng > 0 && r.st < 2; }   // 2回連続正解で卒業
+function mark(id, ok){
+  const r = rec(id); r.n++; S.today++;
+  if (ok){ r.ok++; r.st++; } else { r.ng++; r.st = 0; r.lw = Date.now(); }
+  save();
+}
+
+/* ---------- 出題の選び方 ---------- */
+// 優先度 = 頻出度 + 苦手 + 未出題 − 卒業済み。少しだけ揺らぎを入れて毎回同じ並びにしない
+function priority(id){
+  const x = ALL[id], r = S.r[id];
+  let p = x.f * 10;
+  if (!r || r.n === 0) p += 8;
+  else {
+    if (isWeak(id)) p += 30 + Math.min(r.ng, 3) * 4;
+    if (r.st >= 2) p -= 22;
+    p += Math.round(tagWeakness(x) * 10);
+  }
+  return p + Math.random() * 7;
+}
+function tagWeakness(x){ // その問題が属する分野・タイプの誤答率（0〜1）
+  const rates = [catRate(x.c)].concat((x.t||[]).map(tagRate)).filter(v => v !== null);
+  if (!rates.length) return 0;
+  return 1 - Math.min(...rates);
+}
+function pickBy(ids, n){
+  const sorted = ids.map(id => [id, priority(id)]).sort((a,b) => b[1]-a[1]).map(v => v[0]);
+  // ○と×が偏らないように、どちらも6割を超えないよう選ぶ（危険予測は対象外）
+  const cap = Math.ceil(n * 0.6), cnt = {0:0, 1:0}, out = [], rest = [];
+  for (const id of sorted){
+    if (out.length >= n) break;
+    const a = ALL[id].a;
+    if (a === undefined || cnt[a] < cap){ out.push(id); if (a !== undefined) cnt[a]++; } else rest.push(id);
+  }
+  while (out.length < n && rest.length) out.push(rest.shift());
+  return shuffle(out);
+}
+function shuffle(a){ for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+/* ---------- 集計 ---------- */
+function agg(ids){ let ok=0, ng=0; ids.forEach(id => { const r=S.r[id]; if (r){ ok+=r.ok; ng+=r.ng; } }); return {ok, ng, n:ok+ng}; }
+function idsOfCat(c){ return Object.keys(ALL).filter(id => ALL[id].c === c); }
+function idsOfTag(t){ return Q.filter(x => x.t.includes(t)).map(x => x.id); }
+function catRate(c){ const a = agg(idsOfCat(c)); return a.n >= 3 ? a.ok/a.n : null; }
+function tagRate(t){ const a = agg(idsOfTag(t)); return a.n >= 3 ? a.ok/a.n : null; }
+function weakIds(){ return Object.keys(ALL).filter(isWeak).sort((a,b) => (S.r[b].ng - S.r[a].ng) || (S.r[b].lw - S.r[a].lw)); }
+
+/* ---------- 画面 ---------- */
+const app = document.getElementById("app");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const stars = f => "★".repeat(f) + "☆".repeat(3-f);
+let mockTimer = null;
+function paintStreak(){ document.getElementById("streak").textContent = "今日 " + S.today + "問"; }
+function go(t){
+  if (mockTimer && t !== "mock"){ clearInterval(mockTimer); mockTimer = null; }
+  document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-current", b.dataset.t === t ? "page" : "false"));
+  ({home:renderHome, stats:renderStats, signs:renderSigns, nums:renderNums})[t]();
+  window.scrollTo(0,0); paintStreak();
+}
+document.getElementById("tabs").addEventListener("click", e => { const b = e.target.closest("button"); if (b) go(b.dataset.t); });
+
+function renderHome(){
+  const total = Object.keys(ALL).length;
+  const seen = Object.keys(ALL).filter(id => S.r[id] && S.r[id].n).length;
+  const a = agg(Object.keys(ALL));
+  const weak = weakIds().length;
+  const last = S.mocks[S.mocks.length-1];
+  app.innerHTML = `<section class="view">
+    <div class="hero">
+      <p class="eyebrow" style="color:#fff;opacity:.85">神奈川県運転免許センター 本免学科対策</p>
+      <h2>文章問題90問＋危険予測5問、100点満点で90点以上が合格。</h2>
+      <div class="row3">
+        <div><div class="k">解いた問題</div><div class="v">${seen}<span class="small">/${total}</span></div></div>
+        <div><div class="k">正答率</div><div class="v">${a.n ? Math.round(a.ok/a.n*100) + "%" : "—"}</div></div>
+        <div><div class="k">苦手の残り</div><div class="v">${weak}</div></div>
+      </div>
+    </div>
+    <div class="big2">
+      <button class="bigbtn quick" data-go="drill"><span class="t">お手軽10問</span><span class="d">昼休みに約3分。頻出と苦手から出題</span></button>
+      <button class="bigbtn mock" data-go="mock"><span class="t">模擬試験</span><span class="d">本番と同じ95問・50分・90点合格${last ? "<br>前回 " + last.score + "点" : ""}</span></button>
+    </div>
+    <button class="entry" data-go="weak"><span class="ic" style="background:var(--stop-soft);color:var(--stop)">${weak}</span>
+      <span><h3>苦手克服</h3><p>${weak ? "間違えた問題だけを出題。2回連続で正解すると苦手から外れます。" : "まだ苦手はありません。ドリルを解くとここに溜まります。"}</p></span><span class="chev">›</span></button>
+    <button class="entry" data-go="risk"><span class="ic" style="background:var(--amber-soft);color:var(--ink)">2点</span>
+      <span><h3>危険予測 3場面</h3><p>イラスト問題の形式。3つとも正解で2点、1つでも間違えると0点。</p></span><span class="chev">›</span></button>
+    <h3>分野別に練習</h3>
+    <div class="grid2">${Object.keys(CATS).filter(c => c !== "risk").map(c => {
+      const r = catRate(c); const pct = r === null ? 0 : Math.round(r*100);
+      return `<button class="cat" data-cat="${c}"><span class="t">${CATS[c]}</span>
+        <span class="small muted">${idsOfCat(c).length}問・${r === null ? "未挑戦" : "正答率 " + pct + "%"}</span>
+        <span class="bar"><i class="${pct<70?"low":pct<90?"mid":""}" style="width:${pct}%"></i></span></button>`;
+    }).join("")}</div>
+    <p class="note">問題は道路交通法と「交通の教則」に基づき、学科試験の定番テーマから作ったオリジナル問題です。神奈川県警は実際の試験問題を公開していないため、過去問そのものではありません。★の頻出度は定番テーマかどうかの目安です。2026年9月の生活道路30km/hなど、最新の改正に合わせています。<br>解いた記録はこの端末のブラウザだけに保存され、共有した相手には引き継がれません。消すときは「苦手分析」の一番下の「記録をリセット」から。</p>
+  </section>`;
+  app.querySelectorAll("[data-go]").forEach(b => b.onclick = () => {
+    const k = b.dataset.go;
+    if (k === "drill") startSession(pickBy(Q.map(x=>x.id), 10), "お手軽10問");
+    if (k === "weak"){
+      const w = weakIds();
+      if (w.length) startSession(w.slice(0,15), "苦手克服");
+      else startSession(pickBy(Q.map(x=>x.id), 10), "お手軽10問");
+    }
+    if (k === "risk") startSession(pickBy(RISK.map(x=>x.id), 3), "危険予測");
+    if (k === "mock") startMock();
+  });
+  app.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => startSession(pickBy(idsOfCat(b.dataset.cat), 10), CATS[b.dataset.cat]));
+}
+
+/* ---------- 練習セッション（間違えた問題は3問後に再出題） ---------- */
+let SESS = null;
+function startSession(ids, title){
+  if (!ids.length) return;
+  SESS = { title, queue: ids.slice(), i:0, first:{}, retry:{}, firstOk:0, firstN:0 };
+  renderItem();
+}
+function renderItem(){
+  const id = SESS.queue[SESS.i], x = ALL[id];
+  const isRetry = SESS.retry[id];
+  const pct = Math.round(SESS.i / SESS.queue.length * 100);
+  const tags = `<div class="tagrow"><span class="tag">${CATS[x.c]}</span><span class="tag freq">頻出 ${stars(x.f)}</span>${isRetry ? '<span class="tag retry">もう一度</span>' : ""}${isWeak(id) && !isRetry ? '<span class="tag retry">苦手</span>' : ""}</div>`;
+  const head = `<div class="qhead"><span class="eyebrow">${esc(SESS.title)}</span><span class="small muted">${SESS.i+1} / ${SESS.queue.length}</span></div><div class="progress"><i style="width:${pct}%"></i></div>`;
+  if (x.c === "risk"){
+    app.innerHTML = `<section class="view">${head}<div class="card">${tags}
+      <div class="scene">${esc(x.scene)}<br><span class="small" style="font-weight:500">どのようなことに注意して運転しますか。</span></div>
+      ${x.items.map((it,k) => `<div class="ritem" data-k="${k}"><p>(${k+1}) ${esc(it[0])}</p><div class="mini"><button data-v="1" aria-label="正しい">○</button><button data-v="0" aria-label="誤り">×</button></div></div>`).join("")}
+      <button class="btn blue" id="check" disabled>答え合わせ</button><div id="fb"></div></div></section>`;
+    const pick = [null,null,null];
+    app.querySelectorAll(".ritem").forEach(row => row.querySelectorAll("button").forEach(b => b.onclick = () => {
+      if (b.disabled) return;
+      pick[+row.dataset.k] = +b.dataset.v;
+      row.querySelectorAll("button").forEach(z => z.classList.toggle("sel", z === b));
+      document.getElementById("check").disabled = pick.includes(null);
+    }));
+    document.getElementById("check").onclick = () => {
+      let all = true;
+      app.querySelectorAll(".ritem").forEach(row => {
+        const k = +row.dataset.k, it = x.items[k], ok = pick[k] === it[1]; if (!ok) all = false;
+        row.querySelectorAll("button").forEach(z => { z.disabled = true; z.classList.remove("sel");
+          if (+z.dataset.v === it[1]) z.classList.add("right"); else if (+z.dataset.v === pick[k]) z.classList.add("wrong"); });
+        row.insertAdjacentHTML("beforeend", `<p class="rexp">${ok ? "正解" : "不正解"}・正答は${it[1] ? "○" : "×"}。${esc(it[2])}</p>`);
+      });
+      document.getElementById("check").hidden = true;
+      settle(id, all, all ? "3つとも正解。2点です。" : "1つでも間違えると0点。この場面は少し後にもう一度出ます。");
+    };
+    return;
+  }
+  app.innerHTML = `<section class="view">${head}<div class="card">${tags}
+    ${x.s ? `<div class="signbox">${signSvg(x.s, "問題の標識")}</div>` : ""}
+    <p class="qtext">${esc(x.q)}</p>
+    <div class="ox"><button class="o" data-v="1"><span class="mk">○</span>正しい</button><button class="x" data-v="0"><span class="mk">×</span>誤り</button></div>
+    <div id="fb"></div></div></section>`;
+  app.querySelectorAll(".ox button").forEach(b => b.onclick = () => {
+    const v = +b.dataset.v, ok = v === x.a;
+    app.querySelectorAll(".ox button").forEach(z => { z.disabled = true;
+      if (+z.dataset.v === x.a) z.classList.add("right"); else if (z === b) z.classList.add("wrong"); });
+    settle(id, ok, `正答は${x.a ? "○" : "×"}。${x.e}`);
+  });
+}
+function settle(id, ok, text){
+  const firstTime = !(id in SESS.first);
+  if (firstTime){ SESS.first[id] = ok; SESS.firstN++; if (ok) SESS.firstOk++; }
+  mark(id, ok);
+  if (!ok){ // 同じ回の中で、3問後（足りなければ最後）にもう一度
+    const at = Math.min(SESS.i + 4, SESS.queue.length);
+    SESS.queue.splice(at, 0, id); SESS.retry[id] = true;
+  }
+  const x = ALL[id];
+  const tagTips = !ok && x.t && x.t.length ? `<p class="small muted">つまずきタイプ：${x.t.map(t => TAGS[t].n).join("・")}</p>` : "";
+  document.getElementById("fb").innerHTML = `<div class="explain"><p class="verdict ${ok?"good":"bad"}">${ok ? "正解" : "不正解。このあともう一度出ます"}</p><p>${esc(text)}</p>${tagTips}${ok ? "" : srcHtml(x)}</div>
+    <div style="height:10px"></div><button class="btn" id="next">${SESS.i+1 < SESS.queue.length ? "次の問題" : "結果を見る"}</button>`;
+  paintStreak();
+  const nx = document.getElementById("next"); nx.focus({preventScroll:true});
+  nx.onclick = () => { SESS.i++; if (SESS.i < SESS.queue.length) { renderItem(); window.scrollTo(0,0); } else sessionResult(); };
+}
+function sessionResult(){
+  const wrong = Object.keys(SESS.first).filter(id => !SESS.first[id]);
+  app.innerHTML = `<section class="view">
+    <div class="card score"><span class="eyebrow">${esc(SESS.title)}の結果（1回目の解答）</span>
+      <span class="n">${SESS.firstOk}<span style="font-size:28px">/${SESS.firstN}</span></span>
+      <p class="muted">${wrong.length ? "間違えた問題は、その場でもう一度解いて正解しました。苦手リストにも残っています。" : "全問正解です。"}</p></div>
+    ${wrong.length ? `<h3>今回間違えた問題（解説と載っているところ）</h3>${wrong.map(id => reviewRow(id)).join("")}` : ""}
+    <div class="row"><button class="btn blue" id="again">もう10問</button><button class="btn alt" id="home">ホームへ</button></div>
+  </section>`;
+  document.getElementById("again").onclick = () => startSession(pickBy(Q.map(x=>x.id), 10), "お手軽10問");
+  document.getElementById("home").onclick = () => go("home");
+  window.scrollTo(0,0);
+}
+function reviewRow(id, given){
+  const x = ALL[id];
+  if (x.c === "risk") return `<div class="weak"><span class="tag">${CATS.risk}</span><p><b>${esc(x.scene)}</b></p>${x.items.map((it,k)=>`<p class="small">(${k+1}) ${esc(it[0])} → <b>${it[1]?"○":"×"}</b>${given && given[k]!==it[1] ? '（あなた：' + (given[k]===null||given[k]===undefined?"未回答":given[k]?"○":"×") + '）' : ""}<br><span class="muted">${esc(it[2])}</span></p>`).join("")}${srcHtml(x)}</div>`;
+  return `<div class="weak">${x.s ? `<div class="signbox" style="justify-content:flex-start">${signSvg(x.s).replace("<svg ", '<svg style="width:70px;height:70px" ')}</div>` : ""}
+    <p><b>${esc(x.q)}</b></p><p class="small">正答 <b>${x.a?"○":"×"}</b>${given !== undefined ? "（あなた：" + (given === 1 ? "○" : given === 0 ? "×" : "未回答") + "）" : ""}　${esc(x.e)}</p>${srcHtml(x)}</div>`;
+}
+
+/* ---------- 模擬試験 ---------- */
+let MOCK = null;
+function weightedSample(ids, n){ // 頻出度の二乗で重みづけ（本番に出やすい問題ほど入りやすい）
+  const pool = ids.slice(), out = [];
+  while (out.length < n && pool.length){
+    const w = pool.map(id => ALL[id].f * ALL[id].f), sum = w.reduce((a,b)=>a+b,0);
+    let r = Math.random()*sum, k = 0; while (r > w[k]) { r -= w[k]; k++; }
+    out.push(pool.splice(k,1)[0]);
+  }
+  return out;
+}
+function startMock(){
+  const nO = 40 + Math.floor(Math.random() * 11);   // ○は40〜50問、残りが×
+  const ox = shuffle(weightedSample(Q.filter(x => x.a === 1).map(x=>x.id), nO)
+    .concat(weightedSample(Q.filter(x => x.a === 0).map(x=>x.id), 90 - nO)));
+  const rk = weightedSample(RISK.map(x=>x.id), 5);
+  MOCK = { ids: ox.concat(rk), ans:{}, i:0, end: Date.now() + 50*60*1000, confirm:false };
+  if (mockTimer) clearInterval(mockTimer);
+  mockTimer = setInterval(() => { const el = document.getElementById("timer"); if (!el) return;
+    const left = MOCK.end - Date.now(); if (left <= 0) { finishMock(); return; } el.textContent = fmt(left); }, 1000);
+  document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-current","false"));
+  renderMock();
+}
+const fmt = ms => { const s = Math.max(0, Math.floor(ms/1000)); return String(Math.floor(s/60)).padStart(2,"0") + ":" + String(s%60).padStart(2,"0"); };
+function renderMock(){
+  const id = MOCK.ids[MOCK.i], x = ALL[id], N = MOCK.ids.length, done = Object.keys(MOCK.ans).filter(k => answered(k)).length;
+  let body;
+  if (x.c === "risk"){
+    const cur = MOCK.ans[id] || [null,null,null];
+    body = `<span class="tag freq">危険予測（2点）</span><div class="scene">${esc(x.scene)}<br><span class="small" style="font-weight:500">どのようなことに注意して運転しますか。</span></div>
+      ${x.items.map((it,k) => `<div class="ritem" data-k="${k}"><p>(${k+1}) ${esc(it[0])}</p><div class="mini"><button data-v="1" class="${cur[k]===1?"sel":""}" aria-label="正しい">○</button><button data-v="0" class="${cur[k]===0?"sel":""}" aria-label="誤り">×</button></div></div>`).join("")}`;
+  } else {
+    const cur = MOCK.ans[id];
+    body = `${x.s ? `<div class="signbox">${signSvg(x.s, "問題の標識")}</div>` : ""}<p class="qtext">${esc(x.q)}</p>
+      <div class="ox"><button class="o ${cur===1?"sel":""}" data-v="1"><span class="mk">○</span>正しい</button><button class="x ${cur===0?"sel":""}" data-v="0"><span class="mk">×</span>誤り</button></div>`;
+  }
+  app.innerHTML = `<section class="view">
+    <div class="qhead"><span class="eyebrow">模擬試験　問${MOCK.i+1} / ${N}</span><span class="pill" id="timer">${fmt(MOCK.end-Date.now())}</span></div>
+    <div class="progress"><i style="width:${Math.round(done/N*100)}%"></i></div>
+    <div class="card">${body}
+      <div class="row"><button class="btn alt" id="prev" ${MOCK.i===0?"disabled":""}>前へ</button><button class="btn" id="nextq">${MOCK.i+1<N?"次へ":"見直しへ"}</button></div></div>
+    <details><summary class="small muted">解答状況（${done}/${N}）・番号で移動</summary><div style="height:8px"></div>
+      <div class="jump">${MOCK.ids.map((q,k) => `<button data-j="${k}" class="${answered(q)?"done":""} ${k===MOCK.i?"cur":""}">${k+1}</button>`).join("")}</div></details>
+    <div id="fin">${MOCK.confirm ? `<div class="confirm"><p><b>採点しますか？</b> 未回答 ${N-done}問は不正解になります。</p><div class="row"><button class="btn red" id="yes" style="background:var(--stop);color:#fff">採点する</button><button class="btn alt" id="no">続ける</button></div></div>` : `<button class="btn alt" id="finish">試験を終えて採点する</button>`}</div>
+  </section>`;
+  if (x.c === "risk"){
+    app.querySelectorAll(".ritem").forEach(row => row.querySelectorAll("button").forEach(b => b.onclick = () => {
+      const a = MOCK.ans[id] || [null,null,null]; a[+row.dataset.k] = +b.dataset.v; MOCK.ans[id] = a;
+      row.querySelectorAll("button").forEach(z => z.classList.toggle("sel", z === b));
+    }));
+  } else {
+    app.querySelectorAll(".ox button").forEach(b => b.onclick = () => { MOCK.ans[id] = +b.dataset.v;
+      app.querySelectorAll(".ox button").forEach(z => z.classList.toggle("sel", z === b));
+      setTimeout(() => { if (MOCK && MOCK.i+1 < MOCK.ids.length && MOCK.ids[MOCK.i] === id){ MOCK.i++; renderMock(); } }, 220); });
+  }
+  document.getElementById("prev").onclick = () => { MOCK.i--; renderMock(); };
+  document.getElementById("nextq").onclick = () => { if (MOCK.i+1 < N){ MOCK.i++; renderMock(); } else { MOCK.confirm = true; renderMock(); } };
+  app.querySelectorAll("[data-j]").forEach(b => b.onclick = () => { MOCK.i = +b.dataset.j; renderMock(); });
+  const f = document.getElementById("finish"); if (f) f.onclick = () => { MOCK.confirm = true; renderMock(); };
+  const y = document.getElementById("yes"); if (y) y.onclick = finishMock;
+  const n = document.getElementById("no"); if (n) n.onclick = () => { MOCK.confirm = false; renderMock(); };
+}
+function answered(id){ const a = MOCK.ans[id]; return Array.isArray(a) ? !a.includes(null) : a === 0 || a === 1; }
+function finishMock(){
+  if (!MOCK) return;
+  if (mockTimer){ clearInterval(mockTimer); mockTimer = null; }
+  let score = 0; const wrong = [];
+  const byCat = {};
+  MOCK.ids.forEach(id => {
+    const x = ALL[id], a = MOCK.ans[id]; let ok;
+    if (x.c === "risk"){ ok = Array.isArray(a) && x.items.every((it,k) => a[k] === it[1]); if (ok) score += 2; }
+    else { ok = a === x.a; if (ok) score += 1; }
+    mark(id, ok); if (!ok) wrong.push(id);
+    const c = byCat[x.c] || (byCat[x.c] = {ok:0,n:0}); c.n++; if (ok) c.ok++;
+  });
+  S.mocks.push({ d: todayStr, score }); save();
+  const ans = MOCK.ans; MOCK = null;
+  const pass = score >= 90;
+  const catRows = Object.keys(byCat).sort((a,b) => byCat[a].ok/byCat[a].n - byCat[b].ok/byCat[b].n)
+    .map(c => `<div class="statrow"><span>${CATS[c]}</span><span class="pct">${byCat[c].ok}/${byCat[c].n}</span></div>`).join("");
+  app.innerHTML = `<section class="view">
+    <div class="card score"><span class="eyebrow">模擬試験の結果</span><span class="n ${pass?"pass":"fail"}">${score}<span style="font-size:28px">点</span></span>
+      <h2 class="${pass?"pass":"fail"}">${pass ? "合格ライン（90点）を超えました" : "合格まであと" + (90-score) + "点"}</h2>
+      <p class="muted small">間違えた${wrong.length}問は苦手リストに入りました。「苦手克服」で解き直せます。</p></div>
+    <div class="card"><h3>分野別（低い順）</h3>${catRows}</div>
+    ${wrong.length ? `<h3>間違えた問題（解説と載っているところ）</h3>${wrong.map(id => reviewRow(id, ans[id])).join("")}` : ""}
+    <div class="row"><button class="btn blue" id="w">苦手克服へ</button><button class="btn alt" id="h">ホームへ</button></div>
+  </section>`;
+  document.getElementById("w").onclick = () => { const w = weakIds(); if (w.length) startSession(w.slice(0,15), "苦手克服"); else go("home"); };
+  document.getElementById("h").onclick = () => go("home");
+  window.scrollTo(0,0); paintStreak();
+}
+
+/* ---------- 苦手分析 ---------- */
+function renderStats(){
+  const cats = Object.keys(CATS).map(c => ({c, r:catRate(c), a:agg(idsOfCat(c))}));
+  const tags = Object.keys(TAGS).map(t => ({t, r:tagRate(t), a:agg(idsOfTag(t))}));
+  const ranked = tags.filter(v => v.r !== null && v.r < 0.9).sort((a,b) => a.r - b.r).slice(0,3);
+  const weakCats = cats.filter(v => v.r !== null && v.r < 0.9).sort((a,b) => a.r - b.r).slice(0,3);
+  const row = (label, v) => { const pct = v.r === null ? null : Math.round(v.r*100);
+    return `<div class="statrow"><span>${label}</span><span class="pct">${pct===null ? '<span class="muted small">データ不足</span>' : pct + "%"}</span>
+      <span class="bar" style="grid-column:1/-1"><i class="${pct===null?"":pct<70?"low":pct<90?"mid":""}" style="width:${pct||0}%"></i></span></div>`; };
+  const mocks = S.mocks.slice(-5);
+  app.innerHTML = `<section class="view">
+    <h2>苦手分析</h2>
+    <p class="muted small">分野と「つまずきタイプ」の両方から、どこで落としているかを見ます。3回以上解いた項目だけ集計します。</p>
+    ${ranked.length || weakCats.length ? `<h3>あなたの弱点</h3>
+      ${ranked.map(v => `<div class="weak"><b>${TAGS[v.t].n}　正答率 ${Math.round(v.r*100)}%</b><p class="small">${TAGS[v.t].tip}</p><button class="btn alt" data-tag="${v.t}">このタイプを10問練習</button></div>`).join("")}
+      ${weakCats.map(v => `<div class="weak"><b>${CATS[v.c]}　正答率 ${Math.round(v.r*100)}%</b><button class="btn alt" data-cat="${v.c}">この分野を10問練習</button></div>`).join("")}`
+      : `<p class="note">まだ弱点は見つかっていません。ドリルや模擬試験を解くと、正答率が90%未満の分野とタイプがここに出ます。</p>`}
+    <div class="card"><h3>つまずきタイプ別</h3>${tags.map(v => row(TAGS[v.t].n, v)).join("")}</div>
+    <div class="card"><h3>分野別</h3>${cats.map(v => row(CATS[v.c], v)).join("")}</div>
+    <div class="card"><h3>模擬試験の記録</h3>${mocks.length ? mocks.map(m => `<div class="statrow"><span>${m.d}</span><span class="pct ${m.score>=90?"pass":"fail"}">${m.score}点</span></div>`).join("") : '<p class="muted small">まだ受けていません。</p>'}</div>
+    <button class="btn alt" id="reset">記録をリセット</button><div id="rs"></div>
+  </section>`;
+  app.querySelectorAll("[data-tag]").forEach(b => b.onclick = () => startSession(pickBy(idsOfTag(b.dataset.tag), 10), TAGS[b.dataset.tag].n));
+  app.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => startSession(pickBy(idsOfCat(b.dataset.cat), 10), CATS[b.dataset.cat]));
+  document.getElementById("reset").onclick = () => {
+    document.getElementById("rs").innerHTML = `<div class="confirm"><p>解答の記録と模擬試験の点数をすべて消します。元に戻せません。</p><div class="row"><button class="btn" id="ry" style="background:var(--stop);color:#fff">消す</button><button class="btn alt" id="rn">やめる</button></div></div>`;
+    document.getElementById("ry").onclick = () => { S.r = {}; S.mocks = []; S.today = 0; save(); go("stats"); };
+    document.getElementById("rn").onclick = () => document.getElementById("rs").innerHTML = "";
+  };
+}
+
+/* ---------- 標識一覧 ---------- */
+function renderSigns(){
+  app.innerHTML = `<section class="view"><h2>この問題集に出る標識</h2>
+    <p class="muted small">色と形で分類：赤い縁の丸＝規制、青い四角＝指示、黄色のひし形＝警戒。</p>
+    <div class="signs">${Object.keys(SIGNS).map(k => `<div class="signcell">${signSvg(k)}<b>${SIGNS[k].name}</b><span>${SIGNS[k].kind}</span></div>`).join("")}</div>
+    <div class="card"><h3>まちがえやすい組み合わせ</h3>
+      <p class="small"><b>駐車禁止</b>は斜線1本（停車はできる）。<b>駐停車禁止</b>は×の2本（停車もできない）。</p>
+      <p class="small"><b>最高速度</b>は白地に青い数字と赤い縁。数字の下に青い線があれば<b>最低速度</b>。</p>
+      <p class="small"><b>車両進入禁止</b>は赤地に白い横棒。<b>車両通行止め</b>は白地に赤い縁と赤い斜線1本（駐車禁止の青い部分が白になった形）。</p>
+      <p class="small"><b>一時停止</b>は赤地に白い「止まれ」。<b>徐行</b>は白地に赤い縁と青い「徐行」。どちらも逆三角形です。</p></div>
+  </section>`;
+}
+
+/* ---------- 数字まとめ ---------- */
+function renderNums(){
+  const rows = [
+    ["駐停車禁止","交差点・曲がり角・横断歩道・自転車横断帯","5m以内"],
+    ["駐停車禁止","踏切（前後）・安全地帯の左側（前後）・バス停の標示柱（運行時間中）","10m以内"],
+    ["駐車禁止","火災報知機","1m以内"],
+    ["駐車禁止","駐車場・車庫などの自動車用出入口","3m以内"],
+    ["駐車禁止","道路工事区域・消防用機械器具の置場・消火栓・防火水そう","5m以内"],
+    ["駐車の余地","車の右側にあける幅","3.5m以上"],
+    ["路側帯","中に入って駐停車できる幅（左側にあける余地も）","0.75m超（0.75m以上）"],
+    ["路面電車","乗降客なし・間隔があれば徐行で通過","1.5m以上"],
+    ["追い越し禁止","交差点・踏切・横断歩道・自転車横断帯の手前","30m以内"],
+    ["合図","右左折・転回","30m手前"],
+    ["合図","進路変更","約3秒前"],
+    ["徐行","すぐ止まれる速度","時速10km以下"],
+    ["法定速度","一般道（中央線・車両通行帯・中央分離帯あり）／生活道路（いずれもなし・2026年9月〜）","60km/h／30km/h"],
+    ["法定速度","原付","30km/h"],
+    ["高速道路","普通自動車の最高／最低","100km/h／50km/h"],
+    ["前照灯","昼間でもつける見通し","50m先が見えない"],
+    ["荷物","長さ・幅／高さ（普通自動車）","1.2倍／地上3.8m"],
+    ["けん引","故障車との間隔・白い布","5m以内・0.3m平方以上"],
+    ["荷物の積みおろし","停車として扱われる時間","5分以内"],
+    ["初心者マーク","表示が必要な期間","免許取得1年未満"],
+    ["チャイルドシート","使用が必要な年齢","6歳未満"],
+    ["仮免許の指導者","免許を受けている期間","3年以上"],
+    ["普通免許","総重量／最大積載量／定員","3.5t未満／2t未満／10人以下"]
+  ];
+  app.innerHTML = `<section class="view"><h2>数字まとめ</h2>
+    <p class="muted small">「数字」タイプは一番落としやすいところ。試験直前にもう一度見てください。</p>
+    <div class="tablewrap"><table><thead><tr><th>項目</th><th>場所・内容</th><th>数字</th></tr></thead>
+    <tbody>${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td class="num">${r[2]}</td></tr>`).join("")}</tbody></table></div>
+    <button class="btn blue" id="numdrill">数字の問題を10問</button></section>`;
+  document.getElementById("numdrill").onclick = () => startSession(pickBy(idsOfTag("num"), 10), TAGS.num.n);
+}
+
+renderHome(); paintStreak();
+</script>
+<script>
+if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+</script>
+</body>
+</html>
