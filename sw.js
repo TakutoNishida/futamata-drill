@@ -13,7 +13,7 @@ self.addEventListener("fetch", e => {
   const url = new URL(req.url);
   // 自分のページ：まずネット（最新版）、だめならキャッシュ
   if (url.origin === location.origin) {
-    e.respondWith(fetch(req).then(r => { const cp = r.clone(); caches.open(CACHE).then(c => c.put(req, cp)); return r; })
+    e.respondWith(fetch(req, { cache: "no-cache" }).then(r => { const cp = r.clone(); caches.open(CACHE).then(c => c.put(req, cp)); return r; })
       .catch(() => caches.match(req).then(r => r || caches.match("index.html"))));
     return;
   }
